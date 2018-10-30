@@ -50,12 +50,12 @@ $("#sidebar").animate({width:'33.3333%'},'slow');
         <span class="icon-bar"></span>
       </button>
       {% if site.author.github %}
-      <a type="button" class="navbar-toggle nav-link" href="{{ site.author.github }}">
+      <a type="button" class="navbar-toggle nav-link" href="http://github.com/{{ site.author.github }}">
         <i class="fa fa-github"></i>
       </a>
       {% endif %}
-      {% if site.author.twitter %}
-      <a type="button" class="navbar-toggle nav-link" href="{{ site.author.weibo }}">
+      {% if site.author.weibo %}
+      <a type="button" class="navbar-toggle nav-link" href="http://weibo.com/{{ site.author.weibo }}">
         <i class="fa fa-twitter"></i>
       </a>
       {% endif %}
