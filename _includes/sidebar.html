@@ -8,7 +8,7 @@ border: 3px solid #FFF; height:150px;width:150px" />
         <a href="{{ site.BASE_PATH }}">{{ site.title }}</a>
          <p style="font-size:20px;">{{ site.author.role }}</p>
     </h3>
-    
+
     <hr class="hr-line">
 <h3 class="title">
          <p style="font-size:18px">{{ site.author.bio }}</p>
@@ -16,18 +16,18 @@ border: 3px solid #FFF; height:150px;width:150px" />
 
     <hr class="hr-line1">
  <h3 class="title" style="font-size:30px;">
- 
+
        {% if site.author.github %}
       <a type="button" class="social1" href="http://github.com/{{ site.author.github }}">
         <i class="fa fa-github"></i>
       </a>
       {% endif %}
        {% if site.author.twitter %}
-      <a type="button" class="social2" href="http://twitter.com/{{ site.author.twitter }}">
+      <a type="button" class="social2" href="http://weibo.com{{ site.author.weibo }}">
         <i class="fa fa-twitter"></i>
       </a>
       {% endif %}
-     
+
       {% if site.author.email %}
       <a type="button" class="social3" href="mailto:{{ site.author.email }}">
         <i class="fa fa-envelope"></i>
