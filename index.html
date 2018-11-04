@@ -3,72 +3,161 @@ layout: default
 title: "Hanqing Guo"
 ---
 
-<br/>
-{% for post in paginator.posts %}
+<h1>Welcome</h1>
+<p style="color: #000;">
+    Thank you for visiting my website.
+    My name is Junhong Xu, a Ph.D. student in
+    <a href="http://vail.sice.indiana.edu/index.html">Vehicle Autonomy and Intelligence Lab (VAIL)</a>.
+    I am currently focusing on reinforcement learning and control on mobile vehicles in
 
-<article class="home">
+</p>
 
-  <h2>
- <p class="post-date">
-    {% assign d = post.date | date: "%d" | plus:'0' %}
-    {{ post.date | date: "%B" }}
-    {% case d %}
-    {% when 1 or 21 or 31 %}{{ d }}st,
-    {% when 2 or 22 %}{{ d }}nd,
-    {% when 3 or 23 %}{{ d }}rd,
-    {% else %}{{ d }}th,
-    {% endcase %}
-    {{ post.date | date: "%Y" }}
-  </p>
-    <a href="{{ site.BASE_PATH }}{{ post.url }}" style="font-family: ubuntu">{{ post.title }}</a>
-  </h2>
+<hr style="border: 1.5px solid #bbbbbb;"/>
+<div class="intro">
 
-  <div style="font-family: 'Raleway', sans-serif;font-size:large">
-    {% if post.fullview %}
-    {{ post.content }}
-    {% else %}
-    {% if post.shortinfo %}
-    {{ post.shortinfo }}
-    {% elsif post.description %}
-    {{ post.description }}
-    {% else %}
-    {{ post.excerpt }}
-    {% endif %}
-    {% endif %}
-    <hr class="hr-line1 " style="background-color:#D8D8D8;width:15%;" align="left">
-  </div>
-</article>
-{% endfor %}
-<hr/>
+    <div>
+        <h3>Publications</h3>
+            <p>
+                <b>J. Xu</b>, S. Zhu, H. Guo, and S. Wu. <a href="https://arxiv.org/abs/1709.07911">
+                Avoidance of manual labeling in robotic autonomous navigation
+                through multi-sensory semi-supervised learning.</a> arXiv preprint arXiv:1709.07911, 2017
+                <br>
+                <button class="button" onclick="window.location=href='https://www.youtube.com/watch?v=BvOjQcOTBvU'">
+                    Project video
+                </button>
+            </p>
+            <p>
+                <b>J. Xu</b>, S. Wu, H. Guo, H. Wang, and Q. Yang.
+                <a href="/JunhongXu.github.io/papers/Facial Keypoint Recognition.pdf">
+                 Masked loss residual convolutional neural network for facial keypoint detection.
+                </a> 10th EAI International Conference on Mobile Multimedia Communications,
+                Chongqing, China, June, 2017
+            </p>
+            <p>
+                S. Zhu, H. Guo, <b>J. Xu</b>, and S. Wu.
+                <a href="/JunhongXu.github.io/papers/sensor.pdf">
+                    Distance based user localization and tracking with mechanical
+                    ultrasonic beamforming.
+                </a>
+                International Conference on Computing, Networking and Communications
+                (ICNC), Maui, Hawaii, USA., March 5-8, 2018
+            </p>
+            <p>
+                H. Guo, <b>J. Xu</b>, S. Zhu, and S. Wu.  <a href="/JunhongXu.github.io/papers/full_duplex.pdf">
+                Realtime software defined self-interference cancellation based
+                on machine learning for in-band full duplex wireless communications.</a>
+                International Conference on Computing, Networking and Communications (ICNC),
+                Maui, Hawaii, USA., March 5-8, 2018
+            </p>
+            <p>
+              H. Guo, <b>J. Xu</b>, S. Zhu, and S. Wu. In-band full duplex wireless communications and networking for
+              iot devices: Progress, challenges and opportunities. Elsevier Future Generation Computer Systems
+              Journal, accepted, Oct. 2017
+            </p>
+              S. Wu, <b>J. Xu</b>, S. Zhu, and H. Guo. A deep residual convolutional neural network for facial keypoint
+              detection with missing labels. Elsevier Signal Processing Journal, accepted, Oct. 2017
+            <p>
+                S. Wu, J. Rendall, M. Smith, S. Zhu, <b>J. Xu</b>, Q. Yang, H. Wang, and P. Qin.
+                <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7851022">
+                    Survey on prediction
+                    algorithms in smart homes.
+                </a>IEEE Internet of Things Journal, Vol.4, No.3, pp 636-644, June 2017
+            </p>
+            <p>
+              S. Wu, K. Blair, <b>J. Xu</b>, S. Zhu, H. Guo, K. Wang, and L. Cheng. Real time video stitching by
+              exploring temporal and spatial features. 10th EAI International Conference on Mobile Multimedia
+              Communications, Chongqing, China, June, 2017
+            </p>
+    </div>
 
-<ul class="pager">
+    <hr style="border: 1.5px solid #bbbbbb;"/>
 
-  {% if paginator.previous_page %}
-  <li class="previous">
-    {% if paginator.previous_page == 1 %}
-    <a href="{{ site.BASE_PATH }}/#blog">&larr; Newer</a>
-    {% else %}
-    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.previous_page }}">&larr; Newer</a>
-    {% endif %}
-  </li>
-  {% else %}
-  <li class="previous disabled">
-    <a>&larr; Newer</a>
-  </li>
-  {% endif %}
+    <div>
+        <h3> Kaggle Competitions </h3>
 
-  <li>
-    <span class="page_number">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  </li>
 
-  {% if paginator.next_page %}
-  <li class="next">
-    <a href="{{ site.BASE_PATH }}/{{ site.paginate_path | replace: ':num', paginator.next_page }}">Older &rarr;</a>
-  </li>
-  {% else %}
-  <li class="next disabled">
-    <a>Older &rarr;</a>
-  </li>
-  {% endif %}
 
-</ul>
+
+
+
+
+
+
+
+
+                <p>Oct  9, 2017
+                    <a  href="/JunhongXu.github.io//Kaggle-CarMask/">Kaggle Competition-Carvana Image Masking Challenge.</a> <b>29/735, top 4%</b>
+                    <br>
+                    Github: <a href="https://github.com/JunhongXu/kaggle-carvana-car-masking">https://github.com/JunhongXu/kaggle-carvana-car-masking</a>
+                </p>
+
+
+
+
+                <p>Jul 21, 2017
+                    <a  href="/JunhongXu.github.io//Kaggle-Planet/">Kaggle Competition-Understanding the Amazon from Space.</a> <b></b>
+                    <br>
+                    Github: <a href="https://github.com/JunhongXu/planet-kaggle-pytorch">https://github.com/JunhongXu/planet-kaggle-pytorch</a>
+                </p>
+
+
+
+
+
+
+
+    </div>
+
+    <hr style="border: 1.5px solid #bbbbbb;"/>
+
+    <div>
+        <h3> Paper Implementations </h3>
+
+        <h4>Reinforcement Learning</h4>
+            <p>
+              Proximal Policy Optimization to play Torcs and OpenAI gym envs
+              <br>
+              Github: <a href="https://github.com/JunhongXu/ppo-pytorch">https://github.com/JunhongXu/ppo-pytorch</a>
+                <br>
+              Blog: <a href="/JunhongXu.github.io/Proximal-Policy-Optimization">Use proximal policy optimization to play BipedalWalker and Torcs</a>
+            </p>
+            <p>
+                DDPG solves torcs using pytorch
+                <br>
+                Github: <a href="https://github.com/JunhongXu/imitation-torcs/tree/master/rl_model">
+                            https://github.com/JunhongXu/imitation-torcs/tree/master/rl_model
+                        </a>
+            </p>
+            <p>
+                Parallel actor-critic solving navigation task in Minecraft environment.
+                <br>
+                Github: <a  href="https://github.com/JunhongXu/pytorch-a2c-minecraft">
+                            https://github.com/JunhongXu/pytorch-a2c-minecraft
+                        </a>
+
+            </p>
+            <p>
+                Deep deterministic policy gradient implemented by tensorflow.
+                <br>
+                Github: <a  href="https://github.com/JunhongXu/Reinforcement-Learning-Tensorflow">
+                            https://github.com/JunhongXu/Reinforcement-Learning-Tensorflow
+                        </a>
+
+            </p>
+        <h4>GANs</h4>
+            <p>
+                WGAN implemented by tensorflow
+                <br>
+                Github: <a href="https://github.com/JunhongXu/WGAN-TF">
+                            https://github.com/JunhongXu/WGAN-TF
+                        </a>
+            </p>
+            <p>
+                DCGAN implemented by tensorflow
+                <br>
+                Github: <a href="https://github.com/JunhongXu/DCGAN-TensorFlow">
+                            https://github.com/JunhongXu/DCGAN-TensorFlow
+                        </a>
+            </p>
+    </div>
+</div>
