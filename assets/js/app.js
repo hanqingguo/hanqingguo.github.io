@@ -4,7 +4,7 @@ if(window.location.href=="http://hanqingguo.github.io")
 {
 $("#sidebar").css({width:'100%'});
 $("#btnblog").click(function(){
-$("#sidebar").animate({width:'10%'},'slow');
+$("#sidebar").animate({width:'25%'},'slow');
 });
 }
 });
