@@ -6,5 +6,8 @@ $("#sidebar").css({width:'100%'});
 $("#btnblog").click(function(){
 $("#sidebar").animate({width:'25%'},'slow');
 });
+$("#btnabout").click(function(){
+$("#sidebar").animate({width:'25%'},'slow');
+});
 }
 });
