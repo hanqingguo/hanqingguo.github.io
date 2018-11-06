@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use pytorch to implement CNN (what exactly con2d doing hanqingguo)
+title: Use pytorch to implement CNN (what exactly nn.conv2d doing hanqingguo)
 description: original post at Hanqing
 tagline: original post at hanqingguo.github.io
 image: /assets/media/cnn.png
@@ -11937,7 +11937,7 @@ tensor(1.00000e-02 *
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The output feature map is 3, means out_channel is 3, use 3 filters to convolv $input2$,</p>
 <p>kernel size is $3,1,3,3$, means use 3 filters to make up a kernel.</p>
-<p><img src="attachment:image.png" alt="cnn"></p>
+<p><img src="/assets/media/cnn1.png" alt="cnn"></p>
 <p>3 in rectangle is in_channel</p>
 <p>When $in\_channel$ increase to X (3 as figure above), and $out\_channel$ N (1 as figure above) has different meaning.</p>
 <p>There are $N$ filters, each filter is $3*3$. Feature map is $4*4$</p>
@@ -11998,7 +11998,7 @@ out3.size is torch.Size([1, 1, 4, 4])
 <p>When want to apply different kernel in one RGB images, we can adjust output channel
 Let's say the first 3,3,3 filter for vertical feature
 Apply other 3,3,3 filter to recognize horizantol feature
-<img src="attachment:image.png" alt="image.png"></p>
+<img src="/assets/media/cnn2.png" alt="cnn2"></p>
 
 </div>
 </div>
