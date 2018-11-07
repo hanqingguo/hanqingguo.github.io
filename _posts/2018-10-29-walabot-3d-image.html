@@ -14,19 +14,24 @@ tags: [Radar, Machine-Learning, Smart-home]
 Today I am going to show you how walabot collect 3D images.
 
 <h2>Raw signals<h2>
-  <p></p>
+  <img src="/assets/media/radar/raw.PNG" width="50%"/>
+  <br/>
+  Our radar sensing platform emits probing pulse signals x(t) at a pulse repetition frequency (PRF) of 16 Hz, but within each pulse repetition interval (PRI), the receiver antenna
+samples the received signal y(t) at a very high frequency of 8 KHz.
+  The x-axis of raw signals is response time, while y-axis means amplitude at that time slot. Red line is actually samples what receiver antenna sampling.
+  In other words, response time is signal traverse time from transmit antenna to receive antenna, which depends on distance to radar. Higher amplitude at specific time, means there is object at that place.
 <h2>2D images<h2>
-  <p></p>
+  <img src="/assets/media/radar/2d.PNG" width="50%"/>
+  <img src="/assets/media/radar/2d-real.png" width="50%"/>
+  <br/>
 <h2>3D images<h2>
   <p>Instead of using 2D images, we construct 3D images based on those 2D images by stack them in vertical direction.</p>
 <h2>3D videos<h2>
   <p></p>
 <h2>CNN extract Features<h2>
-
-  <p>
     Max pooling extracts the most important features like edges whereas, average pooling extracts features so smoothly. For image data, you can see the difference. Although both are used for same reason, I think max pooling is better for extracting the extreme features. Average pooling sometimes can’t extract good features because it takes all into count and results an average value which may/may not be important for object detection type tasks.
 
 Note here, average pooling brings all into count and flows it to next layer which means all values actually are used for feature mapping and creating output - which is a very generalized computation. If you don’t need all inputs from Conv layer, you will get bad accuracy for average pooling.
-  </p>
+
 <h2>LSTM training<h2>
   <p></p>
