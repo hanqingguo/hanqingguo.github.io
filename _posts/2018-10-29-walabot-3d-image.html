@@ -10,67 +10,22 @@ tags: [Radar, Machine-Learning, Smart-home]
 <img src="{{page.image}}" width="85%"/>
 <br/>
 <br/>
-Walabot, <a href="http://httpd.apache.org/">Apache</a>, MySQL/MariaDB, PHP: In short LAMP, a complete Open Source solution for web-developer. Apache Web Server,Often referred to as simply <a href="http://httpd.apache.org/">Apache</a>, a public-domain open source Web server developed by a loosely-knit group of programmers which runs roughly 50% of the servers in the world.
-Here i show you the simple steps to install LAMP on your Arch System:
+<a href="https://walabot.com/">Walabot</a> is kind of FMCW(Frequency Modulated Continuous Wave) radar. It senses environment by transmitting, receiving and recording signals from MIMO antennas. The frequency range from 3.3-10 GHz.
+Today I am going to show you how walabot collect 3D images.
 
-Install php,php-apache,apache and mariadb:
-(note: use your favorite text editor, am using "gedit")
+<h2>Raw signals<h2>
+  <p></p>
+<h2>2D images<h2>
+  <p></p>
+<h2>3D images<h2>
+  <p></p>
+<h2>3D videos<h2>
+  <p></p>
+<h2>CNN extract Features<h2>
+  <p>
+    Max pooling extracts the most important features like edges whereas, average pooling extracts features so smoothly. For image data, you can see the difference. Although both are used for same reason, I think max pooling is better for extracting the extreme features. Average pooling sometimes can’t extract good features because it takes all into count and results an average value which may/may not be important for object detection type tasks.
 
-{% highlight ruby %}
-
-$ sudo Pacman -S php-apache apache mariadb
-
-{% endhighlight %}
-
-Now configure apache:
-
-{% highlight ruby %}
-
-$ sudo gedit /etc/httpd/conf/httpd.conf
-
-#> comment the line .i.e. put a # before it.
-
-LoadModule unique_id_module modules/mod_unique_id.so
-
-#> restart apache
-
-$ sudo systemctl restart httpd
-
-{% endhighlight %}
-
-then configure mariadb:
-
-{% highlight ruby %}
-
-$ sudo systemctl start mysqld
-$ sudo mysql_secure_installation
-
-#> press enter and then "yes" to all.
-
-{% endhighlight %}
-
-Lastly configure php and php-apache:
-
-{% highlight ruby %}
-
-$ sudo gedit /etc/httpd/conf/httpd.conf
-
-#> add the following lines at the end of the files
-
-LoadModule php5_module modules/libphp5.so
-AddHandler php5-script php
-Include conf/extra/php5_module.conf
-
-#> save and exit .
-
-$ sudo gedit /srv/http/info.php
-
-#> add this in your php file:
-
-<?php phpinfo(); ?>
-
-
-{% endhighlight %}
-
-
-finally, restart apache and all is done.enjoy!
+Note here, average pooling brings all into count and flows it to next layer which means all values actually are used for feature mapping and creating output - which is a very generalized computation. If you don’t need all inputs from Conv layer, you will get bad accuracy for average pooling.
+  </p>
+<h2>LSTM training<h2>
+  <p></p>
