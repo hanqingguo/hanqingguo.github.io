@@ -53,7 +53,10 @@ samples the received signal y(t) at a very high frequency of 8 KHz.
 </ol>
   </p>
 <h2>3D videos</h2>
-  <p></p>
+  <p>Once get 3D image, we save it to IO buffer, and use PIL to open buffer, then convert it to ndarray, write ndarray as one frame to video by using openCV</p>
+  <video width="400" controls>
+  <source src="/assets/media/radar/walk.avi" type="video/avi">
+</video>
 <h2>CNN extract Features</h2>
     Max pooling extracts the most important features like edges whereas, average pooling extracts features so smoothly. For image data, you can see the difference. Although both are used for same reason, I think max pooling is better for extracting the extreme features. Average pooling sometimes can’t extract good features because it takes all into count and results an average value which may/may not be important for object detection type tasks.
 
