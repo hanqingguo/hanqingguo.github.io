@@ -22,10 +22,10 @@ To prove the possibility of SI cancellation, a simulation was designated.
 <img src="/assets/media/IBFD/steps.png" width="70%">
 <h2>Step1: Sensing</h2>
 <p>This step sending known signal to probe SI channel. The designated probing signals will pass the SI channel and transform to unknown received SI signals denoted by
-<code>y<sup>si</sup></code></p>
+<code>y<sub>si</sub></code></p>
 
 <h2>Step2: Collect Synchronized Data</h2>
-<p>Following the SI channel probing, the framework collects and records I and Q components of both the probing complex signals <code>x</code> and the received SI signal <code>y<sup>si</sup></code>.
+<p>Following the SI channel probing, the framework collects and records I and Q components of both the probing complex signals <code>x</code> and the received SI signal <code>y<sub>si</sub></code>.
 Since USRPs always start with random time delay, we use barker code embedded to each frame to Synchronize, thus making sure <code>x</code> and <code>y<sub>si</sub></code> is one to one mapping
 </p>
 
