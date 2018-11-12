@@ -36,5 +36,5 @@ model in a supervised learning way. The structure of the DNN
 SI channel model is explained in my recent publication</p>
 
 <h2>Step4: Load SI channel</h2>
-  <p>We write a load module in Gnuradio as an OOT block, in this module, it load DNN parameters by using <code>model.load_state_dict(torch.load(PATH))</code>, then process any input stream through the DNN to estimate <code>y<sup>si</sup>[n]</code></p>
+  <p>We write a load module in Gnuradio as an OOT block, in this module, it load DNN parameters by using <code>model.load_state_dict(torch.load(PATH))</code>, then process any input stream through the DNN to estimate <code>y<sub>si</sub>[n]</code></p>
   <img src="/assets/media/IBFD/Recover.png" width="50%" height="50%">
