@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Using radar to generate 3d image
-description: This artical using walabot to implement 3d image construction.
+title: Using radar to generate real-time 3D videos
+description: This artical uses walabot to construct 3D images and real-time videos, then put them to CNN and LSTM recognize human activities.
 image: /assets/media/walabot.png
 categories: [Radar]
 tags: [Radar, Machine-Learning, Smart-home]
@@ -35,7 +35,7 @@ samples the received signal y(t) at a very high frequency of 8 KHz.
     </code>
 
 <h2>3D images</h2>
-  <p>Instead of using 2D images, we construct 3D images based on those 2D images by stack them in vertical direction.</p>
+  <p>Instead of using 2D images, we construct 3D images based on those 2D images by stacking them in vertical direction.</p>
   <img src="/assets/media/radar/3d-stack.png" width="85%"/>
   <p>Figure above shows how to stack 2D images, the implement process are
     <ol>
@@ -57,6 +57,7 @@ samples the received signal y(t) at a very high frequency of 8 KHz.
   <video width="400" controls>
   <source src="/assets/media/radar/walk.mp4" type="video/mp4">
   </video>
+  <p>Video above shows a human walk around walabot radar.</p>
 <h2>CNN extract Features</h2>
 <p>For each frame, we use resnet-18 to extract features, we change last Average pooling to Max pooling because Max pooling extracts the most important features like edges whereas,
   average pooling extracts features so smoothly. For image data, you can see the difference. Although both are used for same reason, I think max pooling is better for extracting the extreme features.
@@ -65,4 +66,10 @@ samples the received signal y(t) at a very high frequency of 8 KHz.
 </p>
 
 <h2>LSTM training<h2>
-  <p></p>
+  <p><img src="/assets/media/radar/lstm.png" width="45%" height="50%"/><br>
+    We use 3 frames to recognize one activity. Since 3D radar signal shown above is abstract video. Unlike camera videos which each frame represent a activity, radar video can only be detected by
+    continuous frames change to recognize one activity. We collect many 3 frames video for each activity as training data. When testing, given continuous stream radar video, and feed every 3 frames to
+    LSTM network, then gives our prediction for each frame.
+    Detailed technique will be present in my next paper.
+
+  </p>
