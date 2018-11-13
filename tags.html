@@ -24,10 +24,10 @@ title: Tags
   {% for item in (0..site.tags.size) %}{% unless forloop.last %}
     {% capture this_word %}{{ tag_words[item] | strip_newlines }}{% endcapture %}
     <div class="tab-pane" id="{{ this_word | replace:' ','-' }}-ref">
-      <h2 style="margin-top: 0px;font-weight:bold;font-family: ubuntu;">Posts tagged  with {{ this_word }}</h2>
+      <h2 style="margin-top: 0px;font-weight:bold;font-family: Arial, Helvetica, sans-serif;">Posts tagged  with {{ this_word }}</h2>
       <ul class="list-unstyled">
         {% for post in site.tags[this_word] %}{% if post.title != null %}
-          <li style="line-height: 35px;"><a style="font-family: 'Raleway', sans-serif; color:#333;font-weight:bold" href="{{ site.BASE_PATH }}{{post.url}}">{{post.title}}</a> <span class="text-muted">- {{ post.date | date: "%B %d, %Y" }}</span></li>
+          <li style="line-height: 35px;"><a style="font-family: 'Times New Roman', Times, serif; color:#333;font-weight:bold" href="{{ site.BASE_PATH }}{{post.url}}">{{post.title}}</a> <span class="text-muted">- {{ post.date | date: "%B %d, %Y" }}</span></li>
         {% endif %}{% endfor %}
       </ul>
     </div>
