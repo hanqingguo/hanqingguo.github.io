@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Deepfakes Implement with Pytorch
-description: Want to add chinese Character to your yolo project? Since Opencv doesn't support chinese Character, this blog will show how to convert english label to chinese in your code.
+description: Image to use AI put your face to trump presentation video with same emotion, funny stuff.
 
-image: /assets/media/yolo/yolo.jpg
+image: /assets/media/deepfake/demo.png
 categories: [toys]
 tags: [Machine-Learning,pytorch]
 
@@ -11,77 +11,59 @@ tags: [Machine-Learning,pytorch]
 <img src="{{page.image}}" width="85%"/>
 <br/>
 <br/>
-<h2>source code</h2>
-This link behind shows how to implement <a href="https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/">YOLOv3 with pytorch instructions</a>
-In my tutorial, I give a solution to convert Label to Chinese Character.
+<h2>What is Deepfakes</h2>
+Basically, Deepfakes is an unsupervised machine learning algorithm. It trains one encoder and two decoders to process person A and person B, the loss can be calculated by difference between ground truth image and decoded image.
+For example, it trains an encoder(e) to extract person A features, and trains a decoder(dA) to decode A's feature and produce fake A's image(fA). Through comparing difference between original image and fA, to make encoder and decoder work well. Similarly, the same encoder (e) also extracts B's feature,
+and trains a decoder(dB) to decode B's feature and produce fake B's image(fB).
+Think about it, what if given a image of A, and use (dB) to decode, what will happens?
+Here is the magic:
+<img src="/assets/media/deepfake/face.jpg" width="85%"/>
 
-<h2>4 Steps To Convert Label to Chinese</h2>
+<h2>Basic Concept</h2>
+This basic concept of deepfake can also be found here: <a href="https://www.alanzucconi.com/2018/03/14/understanding-the-technology-behind-deepfakes/">understanding Deepfakes </a>
+or chinese version <a href="https://oldpan.me/archives/deepfake-autoencoder-face-swap"> Good Tutorial of Chinese version Deepfakes</a>
+In my tutorial, I give a solution to use pytorch implement deepfakes and change trump's presentation video with my face!
 
-<h3>1. Change coconame</h3>
-<p> First of all, we need to translate english label to chinese label
-<a href="https://github.com/hanqingguo/YoloV3Pytorch/blob/master/data/coco.names">translated labels is availiable here</a></p>
-<br>
-<h3>2. Use FreeType to write a script to draw chinese characters</h3>
-<br>
-<p> Because Opencv doesn't support chinese character, we need to use a known font style to draw chinese character, it contains 3 parts:
-  <ol>
-<li><code>draw_ft_bitmap(self, img, bitmap, pen, color)</code><br>
-draw each char <br>
-<code>
-        :param bitmap: bitmap <br>
-        :param pen:    pen <br>
-        :param color:  pen color e.g.(0,0,255) - red <br>
-        :return:       image</code>
- </li>
-<li><code>draw_string(self, img, x_pos, y_pos, text, color)</code><br>
-  draw string <br>
-  <code>
-          :param x_pos: text x-postion on img <br>
-          :param y_pos: text y-postion on img <br>
-          :param text:  text (unicode) <br>
-          :param color: text color <br>
-          :return:      image <br>
-</code>
-</li>
+<h2>4 Steps To Use My code</h2>
+find my code at <a href="https://github.com/hanqingguo/deepfake-pytorch">My Code</a> and git clone to an empty repo.
 
-<li><code>draw_text(self, image, pos, text, text_size, text_color)</code><br>
-  (draw chinese(or not) text with ttf <br>
-  <code>
-        :param image:     image(numpy.ndarray) to draw text <br>
-        :param pos:       where to draw text <br>
-        :param text:      the context, for chinese should be unicode type<br>
-        :param text_size: text size <br>
-        :param text_color:text color <br>
-        :return:          image
-  </code>
-</li>
-</ol>
+<h3>Requirement:</h3>
+python == 3.6 <br>
+pytorch == 0.4.0 or 1.0 <br>
+dlib <br>
+
+<h3>1. Construct Dataset</h3>
+<p> First of all, we need to constrcut our dataset.<br></p>
+<pre> $ cd #current directory#
+      $ mkdir train
+      $ cd train
+</pre>
+<p>Put videos of A and B to train/ , for example, trump.mp4 and me.mp4 where A is trump, B is myself </p>
+
+<h3>2. Crop frames from videos</h3>
+In train/ directory, make two subdirectory to store all frames of videos
+<pre> $ mkdir personA
+      $ mkdir personB
+</pre>
+Run <pre>python crop_from_video.py</pre> to save frames to personA and personB directory. <br>
+<p>## Make sure change Video_Path and save_path parameter in the python file. Do it twice to crop trump video to personA directory, crop myself video to personB directory.</p>
+
+<h3>3. Collect faces from frames</h3>
+In train/ directory, make two subdirectory to store faces of all frames.
+<pre> $ mkdir personA_face #(To save faces of person A from personA)
+      $ mkdir personB_face #(To save faces of person A from personA)
+</pre>
+Run <pre>python crop_face.py</pre> se dlib to crop faces from frames and save to personA_face and personB_face<br>
+<p>## Make sure change Image_Folder and OutFace_Folder parameter in the python file. Do it twice to crop trump face to personA_face directory, crop myselft face to personB_face directory.
 </p>
+<h3>4. Train Model</h3>
+<pre>python train.py</pre>
+<h3>5. Load Model and Output video with my face and trump body</h3>
+<pre>python convert_video.py</pre>
 
-<h3>3. Download msyh.ttf</h3>
-<p> .ttf file is dependency to specify font style, it would be loaded in FreeType script, click <a href="https://github.com/hanqingguo/YoloV3Pytorch/blob/master/msyh.ttf">here</a> to Download </p>
 
-<h3>4. Apply ft2 Chinese Character to yolo</h3>
-<p>In main detect flow (cam_detect.py), instead of using <code>cv2.imshow()</code>, we use <code>ft.draw_text()</code></p>
-<p>
-   comment <code>cv2.putText</code> part, use <code>ft.draw_text</code> instead <br>
-   <code>
-    #c2 = c1[0] + t_size[0] + 3, c1[1] + t_size[1] + 4 <br>
-    #cv2.rectangle(img, c1, c2,color, -1) <br>
-    #cv2.rectangle(img, c1, c2, color, -1)<br>
-    # cv2.putText(img, label, (c1[0], c1[1] + t_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 2, [225,255,255], 1);<br>
-    ft = ft2.put_chinese_text('msyh.ttf')<br>
-    ft.draw_text(image=img, pos=(c1[0], c1[1] + t_size[1] - 7), text=label, text_size=15, text_color=[255, 255, 255])</p>
-</code>
-<h3>Before Translate</h3>
+<h3>Interesting!</h3>
 <video width="400" controls>
-<source src="/assets/media/yolo/eng_caption.mp4" type="video/mp4">
+<source src="/assets/media/deepfake/me4_out.mp4" type="video/mp4">
 </video>
 <br/>
-<h3>After Translate</h3>
-<video width="400" controls>
-<source src="/assets/media/yolo/cn_caption.mp4" type="video/mp4">
-</video>
-</br>
-<p>You can Download All source code from my github,<a href="https://github.com/hanqingguo/YoloV3Pytorch">here</a>
-</p>
