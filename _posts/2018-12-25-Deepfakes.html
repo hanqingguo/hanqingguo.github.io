@@ -36,27 +36,30 @@ dlib <br>
 
 <h3>1. Construct Dataset</h3>
 <p> First of all, we need to constrcut our dataset.<br></p>
-<pre> $ cd #current directory#
-      $ mkdir train
-      $ cd train
+<pre>
+$ cd #current directory#
+$ mkdir train
+$ cd train
 </pre>
 <p>Put videos of A and B to train/ , for example, trump.mp4 and me.mp4 where A is trump, B is myself </p>
 
 <h3>2. Crop frames from videos</h3>
 In train/ directory, make two subdirectory to store all frames of videos
-<pre> $ mkdir personA
-      $ mkdir personB
+<pre>
+$ mkdir personA
+$ mkdir personB
 </pre>
 Run <pre>python crop_from_video.py</pre> to save frames to personA and personB directory. <br>
 <p>## Make sure change Video_Path and save_path parameter in the python file. Do it twice to crop trump video to personA directory, crop myself video to personB directory.</p>
 
 <h3>3. Collect faces from frames</h3>
 In train/ directory, make two subdirectory to store faces of all frames.
-<pre> $ mkdir personA_face #(To save faces of person A from personA)
-      $ mkdir personB_face #(To save faces of person A from personA)
+<pre>
+$ mkdir personA_face #(To save faces of person A from personA)
+$ mkdir personB_face #(To save faces of person A from personA)
 </pre>
 Run <pre>python crop_face.py</pre> se dlib to crop faces from frames and save to personA_face and personB_face<br>
-<p>## Make sure change Image_Folder and OutFace_Folder parameter in the python file. Do it twice to crop trump face to personA_face directory, crop myselft face to personB_face directory.
+<p>## Make sure change Image_Folder and OutFace_Folder parameter in the python file. Do it twice to crop trump face to <code>personA_face</code> directory, crop myselft face to personB_face directory.
 </p>
 <h3>4. Train Model</h3>
 <pre>python train.py</pre>
