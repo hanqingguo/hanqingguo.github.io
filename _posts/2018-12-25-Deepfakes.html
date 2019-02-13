@@ -14,9 +14,11 @@ tags: [Machine-Learning,pytorch]
 <h2>What is Deepfakes</h2>
 Basically, Deepfakes is an unsupervised machine learning algorithm. It trains one encoder and two decoders to process person A and person B, the loss can be calculated by difference between ground truth image and decoded image.
 For example, it trains an encoder(e) to extract person A features, and trains a decoder(dA) to decode A's feature and produce fake A's image(fA). Through comparing difference between original image and fA, to make encoder and decoder work well. Similarly, the same encoder (e) also extracts B's feature,
-and trains a decoder(dB) to decode B's feature and produce fake B's image(fB).
-Think about it, what if given a image of A, and use (dB) to decode, what will happens?
-Here is the magic:
+and trains a decoder(dB) to decode B's feature and produce fake B's image(fB).<br>
+<p><font color="blue">
+Think about it, what if given a image of A, and use (dB) to decode, what will happens?</font></p><br>
+<p><font size="+2">
+Here is the magic:</font></p>
 <img src="/assets/media/deepfake/face.jpg" width="85%"/>
 
 <h2>Basic Concept</h2>
