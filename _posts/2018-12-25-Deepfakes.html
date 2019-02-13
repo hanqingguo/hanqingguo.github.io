@@ -12,11 +12,13 @@ tags: [Machine-Learning,pytorch]
 <br/>
 <br/>
 <h2>What is Deepfakes</h2>
-Basically, Deepfakes is an unsupervised machine learning algorithm. It trains one encoder and two decoders to process person A and person B, the loss can be calculated by difference between ground truth image and decoded image.
-For example, it trains an encoder(e) to extract person A features, and trains a decoder(dA) to decode A's feature and produce fake A's image(fA). Through comparing difference between original image and fA, to make encoder and decoder work well. Similarly, the same encoder (e) also extracts B's feature,
-and trains a decoder(dB) to decode B's feature and produce fake B's image(fB).<br>
+Basically, Deepfakes is an unsupervised machine learning algorithm.<br>
+It trains <code>one encoder</code> and <code>two decoders</code> to process <code>person A</code> and <code>person B</code>, the loss can be calculated by difference between ground truth image and decoded image.<br>
+For example, it trains an <code>encoder(e)</code> to extract person A features, and trains a <code>decoder(dA)</code> to decode A's feature and produce fake A's <code>image(fA)</code>. Through comparing difference between <code>original image</code> and <code>fA</code>, to make encoder and decoder work well. <br>
+Similarly, the same <code>encoder(e)</code> also extracts B's feature,
+and trains a <code>decoder(dB)</code> to decode B's feature and produce fake B's <code>image(fB)</code>.<br>
 <p><font color="blue">
-Think about it, what if given a image of A, and use (dB) to decode, what will happens?</font></p><br>
+Think about it, what if given a image of A, and use <code>(dB)</code> to decode, what will happens?</font></p><br>
 <p><font size="+2">
 Here is the magic:</font></p>
 <img src="/assets/media/deepfake/face.jpg" width="85%"/>
@@ -30,9 +32,11 @@ In my tutorial, I give a solution to use pytorch implement deepfakes and change 
 find my code at <a href="https://github.com/hanqingguo/deepfake-pytorch">My Code</a> and git clone to an empty repo.
 
 <h3>Requirement:</h3>
-python == 3.6 <br>
-pytorch == 0.4.0 or 1.0 <br>
-dlib <br>
+<pre>
+python == 3.6
+pytorch &gt= 0.4.0 or 1.0
+dlib
+</pre>
 
 <h3>1. Construct Dataset</h3>
 <p> First of all, we need to constrcut our dataset.<br></p>
@@ -49,16 +53,19 @@ In train/ directory, make two subdirectory to store all frames of videos
 $ mkdir personA
 $ mkdir personB
 </pre>
-Run <pre>python crop_from_video.py</pre> to save frames to personA and personB directory. <br>
-<p>## Make sure change Video_Path and save_path parameter in the python file. Do it twice to crop trump video to personA directory, crop myself video to personB directory.</p>
+Run <pre>python crop_from_video.py</pre> to save frames to <code>personA</code> and <code>personB</code> directory. <br>
+<p>Make sure change <code>Video_Path</code> and <code>save_path</code> parameter in the python file. Do it twice to crop trump video to <code>personA</code> directory, crop my video to <code>personB</code> directory.</p>
 
 <h3>3. Collect faces from frames</h3>
 In train/ directory, make two subdirectory to store faces of all frames.
 <pre>
-$ mkdir personA_face #(To save faces of person A from personA)
+$ mkdir personA_face
+</pre>
+#(To save faces of person A from personA)
+<pre>
 $ mkdir personB_face #(To save faces of person A from personA)
 </pre>
-Run <pre>python crop_face.py</pre> se dlib to crop faces from frames and save to personA_face and personB_face<br>
+Run <pre>python crop_face.py</pre> use <code>dlib</code> to crop faces from frames and save to <code>personA_face</code> and <code>personB_face</code><br>
 <p>## Make sure change Image_Folder and OutFace_Folder parameter in the python file. Do it twice to crop trump face to <code>personA_face</code> directory, crop myselft face to personB_face directory.
 </p>
 <h3>4. Train Model</h3>
