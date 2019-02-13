@@ -1,0 +1,87 @@
+---
+layout: post
+title: Deepfakes Implement with Pytorch
+description: Want to add chinese Character to your yolo project? Since Opencv doesn't support chinese Character, this blog will show how to convert english label to chinese in your code.
+
+image: /assets/media/yolo/yolo.jpg
+categories: [toys]
+tags: [Machine-Learning,pytorch]
+
+---
+<img src="{{page.image}}" width="85%"/>
+<br/>
+<br/>
+<h2>source code</h2>
+This link behind shows how to implement <a href="https://blog.paperspace.com/how-to-implement-a-yolo-object-detector-in-pytorch/">YOLOv3 with pytorch instructions</a>
+In my tutorial, I give a solution to convert Label to Chinese Character.
+
+<h2>4 Steps To Convert Label to Chinese</h2>
+
+<h3>1. Change coconame</h3>
+<p> First of all, we need to translate english label to chinese label
+<a href="https://github.com/hanqingguo/YoloV3Pytorch/blob/master/data/coco.names">translated labels is availiable here</a></p>
+<br>
+<h3>2. Use FreeType to write a script to draw chinese characters</h3>
+<br>
+<p> Because Opencv doesn't support chinese character, we need to use a known font style to draw chinese character, it contains 3 parts:
+  <ol>
+<li><code>draw_ft_bitmap(self, img, bitmap, pen, color)</code><br>
+draw each char <br>
+<code>
+        :param bitmap: bitmap <br>
+        :param pen:    pen <br>
+        :param color:  pen color e.g.(0,0,255) - red <br>
+        :return:       image</code>
+ </li>
+<li><code>draw_string(self, img, x_pos, y_pos, text, color)</code><br>
+  draw string <br>
+  <code>
+          :param x_pos: text x-postion on img <br>
+          :param y_pos: text y-postion on img <br>
+          :param text:  text (unicode) <br>
+          :param color: text color <br>
+          :return:      image <br>
+</code>
+</li>
+
+<li><code>draw_text(self, image, pos, text, text_size, text_color)</code><br>
+  (draw chinese(or not) text with ttf <br>
+  <code>
+        :param image:     image(numpy.ndarray) to draw text <br>
+        :param pos:       where to draw text <br>
+        :param text:      the context, for chinese should be unicode type<br>
+        :param text_size: text size <br>
+        :param text_color:text color <br>
+        :return:          image
+  </code>
+</li>
+</ol>
+</p>
+
+<h3>3. Download msyh.ttf</h3>
+<p> .ttf file is dependency to specify font style, it would be loaded in FreeType script, click <a href="https://github.com/hanqingguo/YoloV3Pytorch/blob/master/msyh.ttf">here</a> to Download </p>
+
+<h3>4. Apply ft2 Chinese Character to yolo</h3>
+<p>In main detect flow (cam_detect.py), instead of using <code>cv2.imshow()</code>, we use <code>ft.draw_text()</code></p>
+<p>
+   comment <code>cv2.putText</code> part, use <code>ft.draw_text</code> instead <br>
+   <code>
+    #c2 = c1[0] + t_size[0] + 3, c1[1] + t_size[1] + 4 <br>
+    #cv2.rectangle(img, c1, c2,color, -1) <br>
+    #cv2.rectangle(img, c1, c2, color, -1)<br>
+    # cv2.putText(img, label, (c1[0], c1[1] + t_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 2, [225,255,255], 1);<br>
+    ft = ft2.put_chinese_text('msyh.ttf')<br>
+    ft.draw_text(image=img, pos=(c1[0], c1[1] + t_size[1] - 7), text=label, text_size=15, text_color=[255, 255, 255])</p>
+</code>
+<h3>Before Translate</h3>
+<video width="400" controls>
+<source src="/assets/media/yolo/eng_caption.mp4" type="video/mp4">
+</video>
+<br/>
+<h3>After Translate</h3>
+<video width="400" controls>
+<source src="/assets/media/yolo/cn_caption.mp4" type="video/mp4">
+</video>
+</br>
+<p>You can Download All source code from my github,<a href="https://github.com/hanqingguo/YoloV3Pytorch">here</a>
+</p>
