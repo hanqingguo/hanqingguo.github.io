@@ -27,33 +27,34 @@ In my tutorial, I give a solution to convert Label to Chinese Character.
   <ol>
 <li><code>draw_ft_bitmap(self, img, bitmap, pen, color)</code><br>
 draw each char <br>
-<code>
-        :param bitmap: bitmap <br>
-        :param pen:    pen <br>
-        :param color:  pen color e.g.(0,0,255) - red <br>
-        :return:       image</code>
+<pre>
+    :param bitmap: bitmap <br>
+    :param pen:    pen <br>
+    :param color:  pen color e.g.(0,0,255) - red <br>
+    :return:       image
+</pre>
  </li>
 <li><code>draw_string(self, img, x_pos, y_pos, text, color)</code><br>
   draw string <br>
-  <code>
-          :param x_pos: text x-postion on img <br>
-          :param y_pos: text y-postion on img <br>
-          :param text:  text (unicode) <br>
-          :param color: text color <br>
-          :return:      image <br>
-</code>
+<pre>
+    :param x_pos: text x-postion on img
+    :param y_pos: text y-postion on img
+    :param text:  text (unicode)
+    :param color: text color
+    :return:      image
+</pre>
 </li>
 
 <li><code>draw_text(self, image, pos, text, text_size, text_color)</code><br>
   (draw chinese(or not) text with ttf <br>
-  <code>
-        :param image:     image(numpy.ndarray) to draw text <br>
-        :param pos:       where to draw text <br>
-        :param text:      the context, for chinese should be unicode type<br>
-        :param text_size: text size <br>
-        :param text_color:text color <br>
-        :return:          image
-  </code>
+<pre>
+    :param image:     image(numpy.ndarray) to draw text
+    :param pos:       where to draw text
+    :param text:      the context, for chinese should be unicode type
+    :param text_size: text size
+    :param text_color:text color
+    :return:          image
+</pre>
 </li>
 </ol>
 </p>
@@ -65,14 +66,14 @@ draw each char <br>
 <p>In main detect flow (cam_detect.py), instead of using <code>cv2.imshow()</code>, we use <code>ft.draw_text()</code></p>
 <p>
    comment <code>cv2.putText</code> part, use <code>ft.draw_text</code> instead <br>
-   <code>
-    #c2 = c1[0] + t_size[0] + 3, c1[1] + t_size[1] + 4 <br>
-    #cv2.rectangle(img, c1, c2,color, -1) <br>
-    #cv2.rectangle(img, c1, c2, color, -1)<br>
-    # cv2.putText(img, label, (c1[0], c1[1] + t_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 2, [225,255,255], 1);<br>
-    ft = ft2.put_chinese_text('msyh.ttf')<br>
-    ft.draw_text(image=img, pos=(c1[0], c1[1] + t_size[1] - 7), text=label, text_size=15, text_color=[255, 255, 255])</p>
-</code>
+<pre>
+    # c2 = c1[0] + t_size[0] + 3, c1[1] + t_size[1] + 4
+    # cv2.rectangle(img, c1, c2,color, -1)
+    # cv2.rectangle(img, c1, c2, color, -1)
+    # cv2.putText(img, label, (c1[0], c1[1] + t_size[1] + 4), cv2.FONT_HERSHEY_PLAIN, 2, [225,255,255], 1);
+    ft = ft2.put_chinese_text('msyh.ttf')
+    ft.draw_text(image=img, pos=(c1[0], c1[1] + t_size[1] - 7), text=label, text_size=15, text_color=[255, 255, 255])
+</pre></p>
 <h3>Before Translate</h3>
 <video width="400" controls>
 <source src="/assets/media/yolo/eng_caption.mp4" type="video/mp4">
