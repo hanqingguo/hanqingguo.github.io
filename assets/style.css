@@ -127,3 +127,52 @@ body {
 .profile-navigation a:hover {
   text-decoration: underline;
 }
+.publication {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.publication img {
+  max-width: 200px;
+  margin-right: 20px;
+}
+
+.publication-details {
+  flex: 1;
+}
+
+.publication-details h2 {
+  margin-top: 0;
+  color: #e74c3c;
+}
+
+.publication-details p {
+  margin-bottom: 10px;
+}
+
+.publication-links a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #3498db;
+}
+
+.publication-links a:hover {
+  text-decoration: underline;
+}
+
+.publication-links {
+  margin-top: 10px;
+}
+.red-bold {
+  color: red;
+  font-weight: bold;
+}
+summary h2 {
+  color: #004080;
+  display: inline;
+}
