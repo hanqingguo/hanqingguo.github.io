@@ -10,9 +10,23 @@ body {
     background-color: #004080;
     color: white;
     padding: 1em 0;
-    text-align: center;
+    text-align: right;
+    height: 50px;
   }
   
+  .header-logo img {
+    max-width: 200px; /* Set max width for your logo */
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+.header-nav {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
   header h1 {
     margin: 0;
   }
@@ -28,9 +42,10 @@ body {
   }
   
   nav ul li a {
-    color: white;
+    color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
+    font-size: 16pt;
   }
   
   nav ul li a:hover {
@@ -81,7 +96,7 @@ body {
 }
 
 .profile-info h1 {
-  font-size: 2.5em;
+  font-size: 2em;
   margin-bottom: 10px;
 }
 
@@ -175,4 +190,104 @@ body {
 summary h2 {
   color: #004080;
   display: inline;
+}
+
+
+@media (max-width: 768px) {
+  /* General adjustments for smaller screens */
+  body {
+    padding: 0;
+  }
+
+  /* Adjust header height and content spacing */
+  header {
+    background-image: url('/images/banner1.jpg'); /* Specify the correct path to your image */
+    background-size: cover; /* Ensures the image covers the entire header area */
+    background-position: center; /* Centers the background image */
+    padding: 20px 0; /* Adjusts spacing within the header */
+    color: white; /* Text color */
+    text-align: center; /* Center aligns the text */
+    height: auto;
+  }
+
+  /* Logo resizing for smaller screens */
+  .header-logo img {
+    max-width: 50px; /* Reduce the size for smaller screens */
+    top: 5px;
+    left: 10px;
+  }
+
+  /* Navigation adjustments */
+  .header-nav {
+    top: 5px;
+    right: 10px;
+  }
+
+  nav ul li {
+    margin-right: 10px; /* Reduce spacing between links */
+  }
+
+  nav ul li a {
+    font-size: 16pt; /* Smaller font size for mobile screens */
+  }
+
+  /* Adjust profile section */
+  .profile-container {
+    flex-direction: column; /* Stack image and info vertically */
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  /* Profile image resizing */
+  .profile-image img {
+    width: 150px; /* Smaller image size */
+    margin-right: 0; /* No margin needed when stacked */
+    margin-bottom: 15px; /* Add some space below the image */
+  }
+
+  /* Profile info center alignment */
+  .profile-info {
+    text-align: center; /* Center text on smaller screens */
+  }
+
+  /* Publication section adjustments */
+  .publication {
+    flex-direction: column; /* Stack image and text vertically */
+    text-align: center;
+  }
+
+  .publication img {
+    max-width: 100px; /* Reduce the image size */
+    margin: 0 auto 10px; /* Center image and add spacing below */
+  }
+
+  /* Reduce font size in publication details */
+  .publication-details h2 {
+    font-size: 1.5em;
+  }
+
+  .publication-details p {
+    font-size: 1em;
+  }
+
+  /* Adjust social media links */
+  .social-links a {
+    margin-right: 5px; /* Reduce spacing */
+  }
+
+  .social-links img {
+    width: 30px; /* Smaller social icons */
+    height: 30px;
+  }
+
+  /* Adjust navigation links below profile info */
+  .profile-navigation a {
+    font-size: 1.2em;
+    margin: 0 10px;
+  }
+
+  /* Main content padding adjustment */
+  main {
+    padding: 1em;
+  }
 }
