@@ -192,6 +192,66 @@ summary h2 {
   display: inline;
 }
 
+.profile-container {
+  display: flex;
+  justify-content: flex-start; /* Align profiles to the left */
+  flex-wrap: wrap;
+}
+
+.profile {
+  margin: 20px;
+  text-align: center; /* Center-aligns the entire profile content */
+  width: 400px;
+  height: 400px;
+}
+
+.profile-pi {
+  margin: 20px;
+  text-align: center; /* Center-aligns the entire profile content */
+  width: 400px;
+  height: 300px;
+}
+
+.profile-pi img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* This ensures the image is centered */
+}
+
+.profile img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* This ensures the image is centered */
+}
+
+.profile h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.profile p {
+  margin: 5px 0;
+}
+
+.profile a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.profile a:hover {
+  text-decoration: underline;
+}
 
 @media (max-width: 768px) {
   /* General adjustments for smaller screens */
@@ -229,20 +289,6 @@ summary h2 {
 
   nav ul li a {
     font-size: 16pt; /* Smaller font size for mobile screens */
-  }
-
-  /* Adjust profile section */
-  .profile-container {
-    flex-direction: column; /* Stack image and info vertically */
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  /* Profile image resizing */
-  .profile-image img {
-    width: 150px; /* Smaller image size */
-    margin-right: 0; /* No margin needed when stacked */
-    margin-bottom: 15px; /* Add some space below the image */
   }
 
   /* Profile info center alignment */
