@@ -21,7 +21,10 @@ body {
     top: 10px;
     left: 20px;
 }
-
+.news{
+  max-height: 500px; /* Set the max height for the scrollable area */
+  overflow-y: scroll; /* Adds a vertical scroll bar */
+}
 .header-nav {
   position: absolute;
   top: 10px;
@@ -253,6 +256,14 @@ summary h2 {
   text-decoration: underline;
 }
 
+
+.sponsor img{
+  margin: 20px;
+  text-align: center; 
+  width: auto;
+  height: 100px;
+}
+
 @media (max-width: 768px) {
   /* General adjustments for smaller screens */
   body {
@@ -330,6 +341,12 @@ summary h2 {
   .profile-navigation a {
     font-size: 1.2em;
     margin: 0 10px;
+  }
+  .sponsor img{
+    margin: 10px;
+    text-align: center; 
+    width: auto;
+    height: 50px;
   }
 
   /* Main content padding adjustment */
