@@ -199,13 +199,55 @@ summary h2 {
   display: flex;
   justify-content: flex-start; /* Align profiles to the left */
   flex-wrap: wrap;
+  margin: 0; /* Remove extra margin */
+  padding: 0; /* Remove extra padding */
+}
+
+.profile-container-small {
+  display: flex;
+  justify-content: flex-start; /* Align profiles to the left */
+  flex-wrap: wrap;
 }
 
 .profile {
-  margin: 20px;
   text-align: center; /* Center-aligns the entire profile content */
   width: 400px;
-  height: 400px;
+  height: 380px;
+}
+
+.profile-stu {
+  text-align: center; /* Center-aligns the entire profile content */
+  width: 400px;
+  height: 300px;
+}
+.profile-stu img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; /* This ensures the image is centered */
+}
+
+.profile-stu h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.profile-stu p {
+  margin: 5px 0;
+}
+
+.profile-stu a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.profile-stu a:hover {
+  text-decoration: underline;
 }
 
 .profile-pi {
