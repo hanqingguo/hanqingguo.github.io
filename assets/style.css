@@ -1,35 +1,96 @@
 /* General Styling */
 
+:root {
+  --iu-crimson: #990000;
+  --iu-crimson-dark: #7a0000;
+  --iu-crimson-light: #fff5f5;
+  --iu-cream: #faf8f6;
+  --iu-text: #222222;
+  --iu-link: #990000;
+  --header-height: 52px;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    color: var(--iu-text);
+    background-color: var(--iu-cream);
   }
   
   header {
-    background-color: #004080;
+    background-color: var(--iu-crimson);
     color: white;
-    padding: 1em 0;
-    text-align: right;
-    height: 50px;
+    height: var(--header-height);
+    padding: 0 1.25em;
+    border-bottom: 2px solid var(--iu-crimson-dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
-  
-  .header-logo img {
-    max-width: 200px; /* Set max width for your logo */
-    height: auto;
-    position: absolute;
-    top: 10px;
-    left: 20px;
+
+  .header-logo {
+    flex-shrink: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .header-logo a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 0;
+  }
+
+  .header-logo img,
+  .logo {
+    height: 42pt;
+    max-height: calc(var(--header-height) - 8px);
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+.header-nav {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 .news{
-  max-height: 500px; /* Set the max height for the scrollable area */
-  overflow-y: scroll; /* Adds a vertical scroll bar */
+  max-height: 500px;
+  overflow-y: scroll;
+  background: white;
+  border: 1px solid rgba(153, 0, 0, 0.15);
+  border-left: 4px solid var(--iu-crimson);
+  border-radius: 6px;
+  padding: 0.5em 1em;
 }
-.header-nav {
-  position: absolute;
-  top: 10px;
-  right: 20px;
+
+.news li {
+  margin-bottom: 0.6em;
 }
+
+.news::-webkit-scrollbar {
+  width: 8px;
+}
+
+.news::-webkit-scrollbar-thumb {
+  background: var(--iu-crimson);
+  border-radius: 4px;
+}
+
+.intro {
+  background: white;
+  border-radius: 6px;
+  padding: 1.25em 1.5em;
+  border: 1px solid rgba(153, 0, 0, 0.12);
+  margin-bottom: 1.5em;
+}
+
   header h1 {
     margin: 0;
   }
@@ -37,6 +98,7 @@ body {
   nav ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
   }
   
   nav ul li {
@@ -48,74 +110,120 @@ body {
     color: rgb(255, 255, 255);
     text-decoration: none;
     font-weight: bold;
-    font-size: 16pt;
+    font-size: 15pt;
   }
   
   nav ul li a:hover {
     text-decoration: underline;
+    color: #ffe8e8;
   }
   
   main {
     padding: 2em;
+    max-width: 1100px;
+    margin: 0 auto;
   }
   
   main h2 {
-    color: #004080;
+    color: var(--iu-crimson);
+    border-bottom: 2px solid var(--iu-crimson);
+    padding-bottom: 0.25em;
+    display: inline-block;
   }
   
   footer {
-    background-color: #f4f4f4;
+    background-color: var(--iu-crimson);
+    color: white;
     text-align: center;
     padding: 1em 0;
+    margin-top: 2em;
+  }
+
+  footer p {
+    margin: 0;
+  }
+
+  a {
+    color: var(--iu-link);
+  }
+
+  a:hover {
+    color: var(--iu-crimson-dark);
   }
   /* Container for the entire profile section */
 .profile-section {
   text-align: center;
   margin: 40px auto;
-  max-width: 1000px;
+  max-width: 1200px;
+  position: relative;
 }
 
-/* Flexbox layout for image and info */
 .profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  min-height: 1px;
+}
+
+.profile-main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
 }
 
-/* Profile image */
-/* Profile image */
 .profile-image img {
-  width: 180px;  /* Adjust this value as needed */
-  height: auto;  /* Keeps the aspect ratio */
+  width: 180px;
+  height: auto;
   border-radius: 8px;
-  margin-right: 100px; /* Adds space between the image and profile info */
+  margin-right: 100px;
 }
 
-
-/* Profile info */
 .profile-info {
   text-align: left;
+}
+
+.profile-highlights {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: left;
+  white-space: nowrap;
+  padding: 1em 1.25em;
+  border-radius: 6px;
+  background: linear-gradient(to bottom, #fff, var(--iu-crimson-light));
+  border-left: 4px solid var(--iu-crimson);
+  box-shadow: 0 2px 8px rgba(153, 0, 0, 0.08);
+}
+
+.profile-highlights p {
+  margin: 5px 0;
+}
+
+.profile-highlights p:first-child {
+  margin-bottom: 8px;
 }
 
 .profile-info h1 {
   font-size: 2em;
   margin-bottom: 10px;
+  color: #000000;
 }
 
 .profile-info p {
-  /*font-size: 1.2em;*/
   margin: 5px 0;
 }
 
 .profile-info a {
   text-decoration: none;
-  color: black;
+  color: var(--iu-crimson);
   font-weight: bold;
 }
 
 .profile-info a:hover {
   text-decoration: underline;
+  color: var(--iu-crimson-dark);
 }
 
 /* Social media links styling */
@@ -136,7 +244,7 @@ body {
 
 .profile-navigation a {
   font-size: 1.5em;
-  color: red;
+  color: var(--iu-crimson);
   text-decoration: none;
   font-weight: bold;
   margin: 0 15px;
@@ -166,7 +274,7 @@ body {
 
 .publication-details h2 {
   margin-top: 0;
-  color: #e74c3c;
+  color: var(--iu-crimson);
 }
 
 .publication-details p {
@@ -176,7 +284,7 @@ body {
 .publication-links a {
   margin-right: 10px;
   text-decoration: none;
-  color: #3498db;
+  color: var(--iu-crimson);
 }
 
 .publication-links a:hover {
@@ -187,11 +295,11 @@ body {
   margin-top: 10px;
 }
 .red-bold {
-  color: red;
+  color: var(--iu-crimson);
   font-weight: bold;
 }
 summary h2 {
-  color: #004080;
+  color: var(--iu-crimson);
   display: inline;
 }
 
@@ -242,7 +350,7 @@ summary h2 {
 }
 
 .profile-stu a {
-  color: #0066cc;
+  color: var(--iu-crimson);
   text-decoration: none;
 }
 
@@ -290,7 +398,7 @@ summary h2 {
 }
 
 .profile a {
-  color: #0066cc;
+  color: var(--iu-crimson);
   text-decoration: none;
 }
 
@@ -314,26 +422,23 @@ summary h2 {
 
   /* Adjust header height and content spacing */
   header {
-    background-image: url('/images/banner1.jpg'); /* Specify the correct path to your image */
-    background-size: cover; /* Ensures the image covers the entire header area */
-    background-position: center; /* Centers the background image */
-    padding: 20px 0; /* Adjusts spacing within the header */
-    color: white; /* Text color */
-    text-align: center; /* Center aligns the text */
+    --header-height: 48px;
+    flex-wrap: wrap;
     height: auto;
+    min-height: var(--header-height);
+    padding: 0.4em 1em;
+    justify-content: center;
   }
 
-  /* Logo resizing for smaller screens */
-  .header-logo img {
-    max-width: 50px; /* Reduce the size for smaller screens */
-    top: 5px;
-    left: 10px;
+  .header-logo img,
+  .logo {
+    height: 42pt;
+    max-height: calc(var(--header-height) - 6px);
   }
 
-  /* Navigation adjustments */
   .header-nav {
-    top: 5px;
-    right: 10px;
+    width: 100%;
+    text-align: center;
   }
 
   nav ul li {
@@ -345,8 +450,31 @@ summary h2 {
   }
 
   /* Profile info center alignment */
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-main {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .profile-info {
-    text-align: center; /* Center text on smaller screens */
+    text-align: center;
+  }
+
+  .profile-image img {
+    margin-right: 0;
+    margin-bottom: 1em;
+  }
+
+  .profile-highlights {
+    position: static;
+    transform: none;
+    white-space: normal;
+    margin-top: 1.5em;
+    text-align: center;
   }
 
   /* Publication section adjustments */
