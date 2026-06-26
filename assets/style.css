@@ -406,6 +406,31 @@ summary h2 {
   text-decoration: underline;
 }
 
+.media-coverage {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.media-item {
+  margin-bottom: 2.5em;
+}
+
+.media-item:last-child {
+  margin-bottom: 0;
+}
+
+.media-item p {
+  margin: 0 0 1em;
+}
+
+.media-item img {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
 
 .sponsor img{
   margin: 20px;
