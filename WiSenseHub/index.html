@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A task-oriented catalog and standardization hub for WiFi sensing datasets.">
+  <title>WiSenseHub — WiFi Sensing Data Hub</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">W</span> WiSenseHub</a>
+    <nav aria-label="Primary navigation">
+      <a href="#datasets">Datasets</a>
+      <a href="#standard">Standard</a>
+      <a href="tutorial.html">Tutorial</a>
+      <a href="example.html">Example</a>
+      <a href="https://github.com/ysy23333/WiSenseHub" data-repo-link>GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">OPEN WIFI SENSING INFRASTRUCTURE</p>
+        <h1>From fragmented CSI files to research-ready data.</h1>
+        <p class="lede">Discover original WiFi sensing datasets, compare collection settings, and reproduce a transparent standardization pipeline.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#datasets">Explore datasets</a>
+          <a class="button secondary" href="tutorial.html">Start tutorial</a>
+        </div>
+      </div>
+      <div class="signal-card" aria-label="Illustration of standardized channel state information">
+        <div class="signal-label"><span>RAW CSI</span><span>CANONICAL 100 Hz</span></div>
+        <svg viewBox="0 0 600 220" role="img" aria-label="Irregular signals transformed to aligned channels">
+          <path class="wave faint" d="M0 60 C35 10 65 110 100 58 S165 8 200 65 S270 125 310 62 S380 5 420 60 S500 120 600 48"/>
+          <path class="wave" d="M0 112 C40 60 74 170 120 110 S205 55 250 118 S325 172 370 108 S455 50 500 112 S560 160 600 105"/>
+          <path class="wave accent" d="M0 170 C45 125 80 208 128 168 S210 126 260 174 S345 210 395 165 S490 122 530 170 S575 200 600 168"/>
+        </svg>
+        <div class="signal-meta"><span>time → seconds</span><span>power → dB relative</span><span>missing → mask</span></div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Catalog statistics">
+      <div><strong id="stat-datasets">—</strong><span>dataset entries</span></div>
+      <div><strong id="stat-tasks">—</strong><span>task categories</span></div>
+      <div><strong id="stat-hardware">—</strong><span>hardware settings</span></div>
+      <div><strong id="stat-open">—</strong><span>direct-access releases</span></div>
+    </section>
+
+    <section id="datasets" class="catalog-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">CATALOG</p><h2>Find data by research question</h2></div>
+        <p>Every entry distinguishes discovery, download access, and redistribution rights.</p>
+      </div>
+      <div class="controls">
+        <label class="search"><span class="sr-only">Search datasets</span><input id="search" type="search" placeholder="Search dataset, hardware, scenario…"></label>
+        <select id="access-filter" aria-label="Filter by access">
+          <option value="">All access types</option>
+          <option value="direct">Direct download</option>
+          <option value="account">Account required</option>
+          <option value="application">Application required</option>
+          <option value="unclear">Access to verify</option>
+        </select>
+      </div>
+      <div id="task-filters" class="task-filters" aria-label="Filter by task"></div>
+      <p id="result-count" class="result-count" aria-live="polite"></p>
+      <div id="dataset-grid" class="dataset-grid"></div>
+      <div id="empty-state" class="empty-state" hidden>No datasets match these filters.</div>
+    </section>
+
+    <section id="standard" class="standard-section">
+      <div class="section-heading light">
+        <div><p class="eyebrow">STANDARD v1</p><h2>Comparable, without erasing provenance</h2></div>
+      </div>
+      <div class="standard-flow">
+        <article><span>01</span><h3>Preserve</h3><p>Keep original complex CSI, timestamps, labels, and source checksums.</p></article>
+        <article><span>02</span><h3>Align</h3><p>Normalize time to seconds, resample explicitly, and expose packet-loss masks.</p></article>
+        <article><span>03</span><h3>Calibrate honestly</h3><p>Use relative dB unless the release documents an absolute power calibration.</p></article>
+        <article><span>04</span><h3>Audit</h3><p>Store every crop, interpolation, padding choice, and adapter version.</p></article>
+      </div>
+      <div class="schema-line"><code>[time, link, subcarrier]</code><span>+</span><code>metadata.json</code><span>+</span><code>valid_mask</code></div>
+    </section>
+  </main>
+
+  <footer><p>WiSenseHub catalogs data; ownership remains with original dataset creators.</p><p>Verified <span id="verified-date">—</span></p></footer>
+  <script src="assets/app.js" defer></script>
+</body>
+</html>

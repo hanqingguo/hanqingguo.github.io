@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A beginner-friendly WiSenseHub tutorial for converting WiFi sensing datasets.">
+  <title>Tutorial — WiSenseHub</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html"><span class="brand-mark">W</span> WiSenseHub</a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html#datasets">Datasets</a>
+      <a href="index.html#standard">Standard</a>
+      <a href="example.html">Examples</a>
+      <a href="https://github.com/ysy23333/WiSenseHub">GitHub</a>
+    </nav>
+  </header>
+
+  <main class="detail-shell tutorial-shell">
+    <a class="back-link" href="index.html">← Home</a>
+    <section class="detail-hero">
+      <p class="eyebrow">QUICKSTART TUTORIAL</p>
+      <h1>Convert one WiFi sensing dataset into research-ready tensors.</h1>
+      <p>This tutorial starts with a zero-download synthetic fixture, then shows the same command pattern for real official releases. The output is compressed NumPy <code>.npz</code> plus provenance, quality, and split manifests.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#zero-download">Run zero-download demo</a>
+        <a class="button secondary" href="#embedded-notebook">View embedded notebook</a>
+        <a class="button secondary" href="notebooks/quickstart.ipynb">Download notebook</a>
+      </div>
+    </section>
+
+    <section class="tutorial-grid">
+      <article><span>01</span><h2>Install</h2><p>Create a clean Python environment and install WiSenseHub in editable mode.</p></article>
+      <article><span>02</span><h2>Prepare</h2><p>Put an official dataset release under <code>data/&lt;dataset-id&gt;/original/</code> without renaming files.</p></article>
+      <article><span>03</span><h2>Convert</h2><p>Run one unified <code>prepare</code> command while choosing split and view settings.</p></article>
+      <article><span>04</span><h2>Inspect</h2><p>Load the generated <code>.npz</code> arrays and check metadata before training a model.</p></article>
+    </section>
+
+    <section id="zero-download" class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">STEP 1</p><h2>Run the zero-download demo</h2></div><p>This proves the standardization pipeline works before you touch a large research dataset.</p></div>
+      <pre><code>python -m venv .venv
+source .venv/bin/activate
+pip install -e ".[dev]"
+
+python examples/make_synthetic_input.py
+python -m wifi_datahub standardize \
+  --input examples/data/synthetic_csi.csv \
+  --output examples/data/standardized/synthetic_csi.npz \
+  --dataset-id synthetic-demo \
+  --sample-rate 100 \
+  --duration 4
+
+python -m wifi_datahub quality \
+  --input examples/data/standardized/synthetic_csi.npz \
+  --output examples/data/standardized/synthetic_csi.quality.json</code></pre>
+    </section>
+
+    <section class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">STEP 2</p><h2>Use a real dataset release</h2></div><p>Download from the official source, extract it into the expected folder, then let the dataset adapter handle discovery.</p></div>
+      <div class="folder-tree">
+        <pre><code>data/ut-har/
+├── original/       # official downloaded files
+├── standardized/   # generated native NPZ tensors
+├── standardized/views/  # optional fixed-shape derived views
+├── reports/        # quality reports
+├── splits/         # train/val/test manifests
+└── prepare-manifest.json</code></pre>
+      </div>
+      <pre><code>python -m wifi_datahub settings ut-har
+
+python -m wifi_datahub prepare ut-har \
+  --setting official \
+  --data-root data \
+  --target-length 128 \
+  --layout link-subcarrier \
+  --interpolation linear</code></pre>
+    </section>
+
+    <section class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">STEP 3</p><h2>Choose split and tensor settings</h2></div><p>WiSenseHub keeps native standardized data and optionally derives fixed-size views for model training.</p></div>
+      <div class="table-scroll">
+        <table class="settings-table">
+          <thead><tr><th>Option</th><th>Purpose</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><code>--setting</code></td><td>Evaluation protocol such as official, random, cross-subject, or cross-device.</td><td><code>--setting cross_subject --holdout 3</code></td></tr>
+            <tr><td><code>--target-rate</code></td><td>Resample a derived view to a fixed Hz when timestamps support it.</td><td><code>--target-rate 100</code></td></tr>
+            <tr><td><code>--target-length</code></td><td>Pad/crop/interpolate to a fixed number of time steps.</td><td><code>--target-length 128</code></td></tr>
+            <tr><td><code>--interpolation</code></td><td>Select none, nearest, or linear interpolation.</td><td><code>--interpolation linear</code></td></tr>
+            <tr><td><code>--layout</code></td><td>Keep canonical axes or flatten link/subcarrier dimensions.</td><td><code>--layout flat</code></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">STEP 4</p><h2>Load the output in Python</h2></div><p>The model-facing artifact is NumPy, not a hidden framework tensor. You can convert it to PyTorch, TensorFlow, or JAX later.</p></div>
+      <pre><code>import json
+import numpy as np
+
+sample = np.load("data/ut-har/standardized/views/example.view.npz")
+print(sample.files)
+print(sample["amplitude"].shape)
+print(sample["valid_mask"].mean())
+
+with open("data/ut-har/prepare-manifest.json") as f:
+    manifest = json.load(f)
+print(manifest["split"]["partition_counts"])</code></pre>
+      <div class="honesty-note"><strong>Key idea</strong><p>Native files preserve dataset-specific information; derived views make training convenient. This separation prevents the hub from pretending all WiFi datasets are naturally collected with the same sampling rate, antennas, or subcarriers.</p></div>
+    </section>
+
+    <section class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">NOTEBOOK</p><h2>When should we use Jupyter?</h2></div><p>Use the notebook for an interactive demo or interview walkthrough; keep the web tutorial as stable public documentation.</p></div>
+      <div class="tutorial-choice">
+        <article><h3>GitHub Pages tutorial</h3><p>Best for quick review, copy-paste commands, and explaining the hub structure to new users.</p></article>
+        <article><h3>Embedded notebook</h3><p>Best for showing code cells, expected outputs, and the NumPy tensor contract directly inside the website.</p><a class="button secondary" href="notebook.html">Open full notebook view</a></article>
+      </div>
+    </section>
+
+    <section id="embedded-notebook" class="tutorial-step">
+      <div class="section-heading"><div><p class="eyebrow">IN-PAGE NOTEBOOK</p><h2>Notebook preview embedded in the Hub</h2></div><p>This static viewer renders the checked-in Jupyter notebook on GitHub Pages. It is visualization-first; live execution can be added later with JupyterLite or Binder.</p></div>
+      <iframe class="notebook-frame" src="notebook.html" title="Embedded WiSenseHub quickstart notebook"></iframe>
+    </section>
+  </main>
+
+  <footer><p>WiSenseHub tutorials never redistribute restricted dataset bytes.</p><p><a href="example.html">See dataset-specific examples</a></p></footer>
+</body>
+</html>

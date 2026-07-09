@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A reproducible WiSenseHub standardization example.">
+  <title>Pipeline Example — WiSenseHub</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">W</span> WiSenseHub</a><nav><a href="index.html#datasets">Datasets</a><a href="index.html#standard">Standard</a></nav></header>
+  <main class="detail-shell example-shell">
+    <a class="back-link" href="index.html">← Home</a>
+    <section class="detail-hero"><p class="eyebrow">REPRODUCIBLE EXAMPLES</p><h1>One workflow, 25 concrete adapters.</h1><p>Every dataset page now shows its official source layout, exact prepare command, inspection snippet, primary output array, expected shape, and dataset-specific caveat.</p></section>
+    <section class="dataset-example-index"><div class="section-heading"><div><p class="eyebrow">CHOOSE A RELEASE</p><h2>Dataset-specific walkthroughs</h2></div><p>The examples use official filenames and directory conventions; the original bytes remain with their creators.</p></div><div id="example-grid" class="example-link-grid"><p>Loading dataset examples…</p></div></section>
+    <section class="section-heading"><div><p class="eyebrow">PIPELINE FIXTURE</p><h2>Synthetic resampling example</h2></div><p>This small fixture tests interpolation and the output contract without downloading research data.</p></section>
+    <section class="example-command"><pre><code>python -m wifi_datahub standardize \
+  --input examples/data/synthetic_csi.csv \
+  --output examples/data/standardized/synthetic_csi.npz \
+  --dataset-id synthetic-demo --sample-rate 100 --duration 4</code></pre></section>
+    <section class="example-results"><div><p class="eyebrow">OUTPUT CONTRACT</p><h2>NPZ arrays</h2><div id="array-report" class="array-report"><p>Loading quality report…</p></div></div><aside><p class="eyebrow">PROVENANCE</p><h2>JSON sidecar</h2><ul><li>Source SHA-256</li><li>Original representation</li><li>Target sampling rate</li><li>Crop and interpolation log</li><li>Validity fraction</li></ul></aside></section>
+    <section class="honesty-note"><strong>Why relative dB?</strong><p>Commodity CSI usually lacks an absolute calibration. WiSenseHub reports power relative to the median valid sample and never relabels arbitrary CSI amplitude as dBm.</p></section>
+  </main>
+  <footer><p>Example data are synthetic and clearly separated from research datasets.</p><p><a href="index.html#standard">Read Standard v1</a></p></footer>
+  <script src="assets/example.js" defer></script>
+</body>
+</html>
