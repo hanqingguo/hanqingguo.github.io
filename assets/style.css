@@ -432,6 +432,100 @@ summary h2 {
   border-radius: 4px;
 }
 
+.intern-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5em 0 1.5em;
+  background: transparent;
+  font-size: 0.95em;
+}
+
+.intern-table th,
+.intern-table td {
+  text-align: left;
+  padding: 0.9em 3em 0.9em 0.5em;
+  border-bottom: 1px solid rgba(153, 0, 0, 0.15);
+  vertical-align: top;
+  background: transparent;
+}
+
+.intern-table th:last-child,
+.intern-table td:last-child {
+  padding-right: 0.5em;
+}
+
+.intern-table th {
+  color: var(--iu-crimson);
+  font-weight: bold;
+  border-bottom: 2px solid var(--iu-crimson);
+  white-space: nowrap;
+}
+
+.intern-table tr:last-child td {
+  border-bottom: none;
+}
+
+.intern-table tr:hover td {
+  background: transparent;
+}
+
+.group-page section {
+  margin: 0.75em 0 1em;
+}
+
+.group-page section h2 {
+  margin-top: 0.4em;
+  margin-bottom: 0.6em;
+}
+
+.group-page .profile-container,
+.group-page .profile-container-small {
+  margin-bottom: 0.5em;
+}
+
+.group-page .profile,
+.group-page .profile-pi,
+.group-page .profile-stu,
+.group-page .profile-alumni {
+  height: auto;
+  min-height: 0;
+  margin-bottom: 1em;
+}
+
+.profile-alumni {
+  text-align: center;
+  width: 260px;
+}
+
+.profile-alumni img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 8px;
+  display: block;
+}
+
+.profile-alumni h3 {
+  margin: 6px 0 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-alumni p {
+  margin: 3px 0;
+  font-size: 0.9em;
+}
+
+.profile-alumni .alumni-next {
+  margin-top: 0.5em;
+  color: var(--iu-text);
+}
+
+.group-page .intern-table {
+  margin: 0.25em 0 0.75em;
+}
+
 .sponsor img{
   margin: 20px;
   text-align: center; 
@@ -500,6 +594,15 @@ summary h2 {
     white-space: normal;
     margin-top: 1.5em;
     text-align: center;
+  }
+
+  .media-item img {
+    max-width: 100%;
+  }
+
+  .intern-table {
+    display: block;
+    overflow-x: auto;
   }
 
   /* Publication section adjustments */
