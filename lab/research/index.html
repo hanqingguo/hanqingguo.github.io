@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — ASPIRE Lab</title>
+  <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/lab/assets/style.css">
+</head>
+<body>
+  <header>
+    <div class="header-logo">
+      <a href="/lab/"><img src="/images/iu_logo2.jpeg" alt="Indiana University logo" class="logo"></a>
+    </div>
+    <a class="nav-lab-link" href="/">Go to personal site →</a>
+    <nav class="header-nav">
+      <ul>
+        <li><a href="/lab/">Home</a></li>
+        <li><a class="active" href="/lab/research/">Research</a></li>
+        <li><a href="/lab/people/">People</a></li>
+        <li><a href="/lab/publications/">Publications</a></li>
+        <li><a href="/lab/resources/">Resources</a></li>
+        <li><a href="/lab/join/">Join Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ============ 1. RESEARCH SCENARIO ============ -->
+    <h2>Research Scenario: What Can Voice Do Beyond Talk?</h2>
+    <p class="scenario-intro">
+      Voice is not just how we talk. It is how we <strong>communicate</strong> with machines and each other,
+      how systems <strong>verify who we are</strong>, and how devices <strong>sense the physical world</strong>.
+      Every one of these roles is now powered by AI, and every one of them can be attacked.
+    </p>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <img class="role-icon" src="/lab/images/elements/icon_comm.png" alt="Communication icon">
+        <h3>Communication</h3>
+        <p>Voice carries commands and conversations, from voice assistants in the car and at home, to underwater acoustic links where radio cannot reach.</p>
+        <div class="role-apps">
+          <figure>
+            <img src="/lab/images/elements/app_incar.png" alt="In-car voice assistant">
+            <figcaption>Voice control in-car</figcaption>
+          </figure>
+          <figure>
+            <img src="/lab/images/elements/app_underwater.png" alt="Underwater acoustic communication">
+            <figcaption>Underwater acoustic links</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="role-card">
+        <img class="role-icon" src="/lab/images/elements/icon_biometric.png" alt="Biometric icon">
+        <h3>Biometrics</h3>
+        <p>“My voice is my password.” Banks, call centers, and smartphones authenticate people by how they sound, a biometric you cannot change.</p>
+        <div class="role-apps">
+          <figure>
+            <img src="/lab/images/elements/app_voicereco.png" alt="Voice recognition on a smartphone">
+            <figcaption>Smartphone voice ID</figcaption>
+          </figure>
+          <figure>
+            <img src="/lab/images/elements/app_chase.png" alt="Chase voice biometrics banking">
+            <figcaption>Voice banking (Chase)</figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="role-card">
+        <img class="role-icon" src="/lab/images/elements/icon_sensing.png" alt="Sensing icon">
+        <h3>Sensing</h3>
+        <p>Sound waves double as radar: inaudible ultrasound tracks gestures, monitors heartbeats, and verifies that a real human is present.</p>
+        <div class="role-apps">
+          <figure>
+            <img src="/lab/images/elements/app_gesture.png" alt="Acoustic gesture sensing with a smartphone">
+            <figcaption>Gesture sensing</figcaption>
+          </figure>
+          <figure>
+            <img src="/lab/images/elements/app_cardiac.png" alt="Wearable cardiac monitoring">
+            <figcaption>Health monitoring</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ 2. THREAT MODELS ============ -->
+    <h2>Threat Models: Who Attacks Whom?</h2>
+    <p class="scenario-intro">
+      We organize threats by the interaction they poison. Each row below is a real attack surface
+      that our lab has demonstrated or defended in top security venues.
+    </p>
+
+    <div class="threat-row">
+      <div class="threat-actors">
+        <img src="/lab/images/elements/icon_user.png" alt="User at a laptop">
+        <span class="vs">×</span>
+        <img src="/lab/images/elements/icon_mobile.png" alt="Mobile device">
+      </div>
+      <div class="threat-body">
+        <h3>Human ↔ Mobile <a href="#human-mobile">Thrust 1 ↓</a></h3>
+        <p>Attackers fool the speaker authentication and speech recognition models inside phones, earbuds, and voice assistants.</p>
+        <ul class="threat-chips">
+          <li>Mis-command</li>
+          <li>Mis-access control</li>
+          <li>Inaudible injection</li>
+          <li>Adversarial speech</li>
+          <li>Backdoored voice models</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="threat-row">
+      <div class="threat-actors">
+        <img src="/lab/images/elements/icon_user.png" alt="User">
+        <span class="vs">×</span>
+        <img src="/lab/images/elements/icon_user.png" alt="Another user" style="transform: scaleX(-1);">
+      </div>
+      <div class="threat-body">
+        <h3>Human ↔ Human <a href="#human-human">Thrust 2 ↓</a></h3>
+        <p>Generative AI turns anyone’s voice into a weapon: deepfake scam calls, cloned identities, secretly recorded and misused speech.</p>
+        <ul class="threat-chips">
+          <li>Deepfake speech online</li>
+          <li>Scam calls</li>
+          <li>Unauthorized recording</li>
+          <li>Speech dataset misuse</li>
+          <li>Sensing privacy leakage</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="threat-row">
+      <div class="threat-actors">
+        <img src="/lab/images/elements/icon_user.png" alt="User">
+        <span class="vs">×</span>
+        <img src="/lab/images/elements/icon_evil_agent.png" alt="Malicious AI agent">
+      </div>
+      <div class="threat-body">
+        <h3>Human ↔ Agent <a href="#human-agent">Thrust 3 ↓</a></h3>
+        <p>Autonomous LLM agents browse, listen, retrieve, and act. A poisoned page, document, or audio clip can hijack them, and they can impersonate us.</p>
+        <ul class="threat-chips">
+          <li>Malicious action</li>
+          <li>Malicious output</li>
+          <li>Voice jailbreak</li>
+          <li>Copyright violation</li>
+          <li>Money loss &amp; fraud</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ============ 3. TRY IT YOURSELF ============ -->
+    <h2>Try It Yourself</h2>
+    <p class="scenario-intro">Our research is demo-driven. These interactive sites let you experience the attacks, defenses, and datasets first-hand.</p>
+    <div class="demo-strip demo-strip-4">
+      <a class="demo-card demo-card-preview" href="https://hanqingguo.github.io/agentSecurity/">
+        <img class="demo-preview" src="/lab/images/previews/agentsec.png" alt="Agent Security Playground preview">
+        <div class="demo-body">
+          <span class="kicker">Interactive Playground</span>
+          <h3>Agent Security Playground</h3>
+          <p>Launch real prompt-injection, tool-exploitation, and chained attacks against a sandboxed LLM agent, then watch it get hijacked.</p>
+        </div>
+      </a>
+      <a class="demo-card demo-card-preview" href="https://hanqingguo.github.io/echoguard-demo/">
+        <img class="demo-preview" src="/lab/images/previews/echoguard.png" alt="EchoGuard preview">
+        <div class="demo-body">
+          <span class="kicker">Live System</span>
+          <h3>EchoGuard</h3>
+          <p>Continuous ultrasound sensing that tells real humans apart from AI agents operating your computer, using only the speaker and microphone.</p>
+        </div>
+      </a>
+      <a class="demo-card demo-card-preview" href="https://hanqingguo.github.io/wm_sok/">
+        <img class="demo-preview" src="/lab/images/previews/wmsok.png" alt="Audio Watermarking SoK preview">
+        <div class="demo-body">
+          <span class="kicker">Benchmark + Audio Demos</span>
+          <h3>SoK: Audio Watermarking</h3>
+          <p>26 watermark schemes, 127 attack settings, listenable samples. Find out which watermarks actually survive deepfake pipelines.</p>
+        </div>
+      </a>
+      <a class="demo-card demo-card-preview" href="https://hanqingguo.github.io/WiSenseHub/index.html">
+        <img class="demo-preview" src="/lab/images/previews/wisensehub.png" alt="WiSenseHub preview">
+        <div class="demo-body">
+          <span class="kicker">Open Dataset</span>
+          <h3>WiSenseHub</h3>
+          <p>A curated wireless-sensing dataset catalog. Explore CSI-Bench and other datasets for sensing and security research.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- ============ 4. THRUST 1 ============ -->
+    <article class="thrust-block" id="human-mobile">
+      <h2>Thrust 1: Human–Mobile Security</h2>
+      <p class="thrust-question">How can we secure interactions between people and mobile, embedded, and edge-intelligent systems?</p>
+      <p>
+        Voice assistants, speech recognition, speaker verification, and wireless sensing operate in noisy,
+        adversarial acoustic and radio environments. We uncover practical attack surfaces on edge devices
+        and design defenses that remain usable in the real world.
+      </p>
+      <ul class="theme-list">
+        <li>Voice-assistant &amp; ASR security</li>
+        <li>Speaker authentication</li>
+        <li>Adversarial speech</li>
+        <li>Secure mobile &amp; IoT sensing</li>
+        <li>Edge-device security</li>
+      </ul>
+
+      <h3>Watch it in action</h3>
+      <div class="video-grid">
+        <article class="video-card">
+          <video controls preload="metadata" src="/lab/videos/surfingattack-demo.mp4"></video>
+          <div class="body">
+            <h4>SurfingAttack (NDSS'21)</h4>
+            <p>Inaudible ultrasonic guided waves travel through the table and command a phone while the owner sits right next to it.</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls preload="metadata" src="/lab/videos/ghosttalk-demo.mp4"></video>
+          <div class="body">
+            <h4>GhostTalk (NDSS'22)</h4>
+            <p>A modified charging cable injects voice commands into a smartphone through the power line, with no sound needed.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3>Projects</h3>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="/images/wavepurifier.png" alt="WavePurifier">
+          <div class="body">
+            <h3>WavePurifier</h3>
+            <p>Purifying audio adversarial examples via hierarchical diffusion models (MobiCom'24).</p>
+            <div class="project-links">
+              <a href="https://wavepurifier.github.io/">Project</a>
+              <a href="/papers/wavepurifier.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/masterkey.png" alt="MASTERKEY">
+          <div class="body">
+            <h3>MASTERKEY</h3>
+            <p>Practical backdoor attack against speaker verification systems (MobiCom'23).</p>
+            <div class="project-links">
+              <a href="https://masterkeyattack.github.io/">Project</a>
+              <a href="https://arxiv.org/pdf/2309.06981.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/piezo.png" alt="PiezoBud">
+          <div class="body">
+            <h3>PiezoBud</h3>
+            <p>A piezo-aided secure earbud with practical speaker authentication (SenSys'24).</p>
+            <div class="project-links">
+              <a href="/papers/peizo.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/specpatch.png" alt="SpecPatch">
+          <div class="body">
+            <h3>SpecPatch</h3>
+            <p>Human-in-the-loop adversarial spectrogram patch attack on ASR, Best Paper Honorable Mention (CCS'22).</p>
+            <div class="project-links">
+              <a href="https://specpatch.github.io/">Project</a>
+              <a href="/papers/SpecPatch_CCS22.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/phantom.png" alt="PhantomSound">
+          <div class="body">
+            <h3>PhantomSound</h3>
+            <p>Black-box, query-efficient audio adversarial attack via split-second phoneme injection (RAID'23).</p>
+            <div class="project-links">
+              <a href="https://arxiv.org/pdf/2309.06960.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/supervoice.png" alt="SuperVoice">
+          <div class="body">
+            <h3>SuperVoice</h3>
+            <p>Speaker verification using ultrasound energy in human speech (AsiaCCS'22).</p>
+            <div class="project-links">
+              <a href="https://supervoiceapp.github.io/">Project</a>
+              <a href="/papers/supervoice.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/surfing.png" alt="SurfingAttack">
+          <div class="body">
+            <h3>SurfingAttack</h3>
+            <p>Ultrasonic guided-wave attacks on voice assistants (NDSS'21).</p>
+            <div class="project-links">
+              <a href="https://surfingattack.github.io/">Project</a>
+              <a href="/papers/surfing.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/ghosttalk.png" alt="GhostTalk">
+          <div class="body">
+            <h3>GhostTalk</h3>
+            <p>Interactive attack on smartphone voice systems through the power line (NDSS'22).</p>
+            <div class="project-links">
+              <a href="https://ghosttalkattack.github.io/">Project</a>
+              <a href="/papers/ghosttalk.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:1em"><a href="/lab/publications/#human-mobile">Full paper list with authors →</a></p>
+    </article>
+
+    <!-- ============ 5. THRUST 2 ============ -->
+    <article class="thrust-block" id="human-human">
+      <h2>Thrust 2: Human–Human Security</h2>
+      <p class="thrust-question">How can we protect human communication, identity, privacy, and digital content from recording, impersonation, sensing, and misuse?</p>
+      <p>
+        Unauthorized recording, voice cloning, deepfake fraud, and privacy leakage from acoustic, RF, and mmWave
+        sensing threaten interpersonal trust. We build defenses that prevent capture, block impersonation,
+        preserve sensing privacy, and trace unauthorized content use.
+      </p>
+      <ul class="theme-list">
+        <li>Unauthorized recording defense</li>
+        <li>Voice-cloning &amp; deepfake protection</li>
+        <li>Audio watermarking &amp; provenance</li>
+        <li>Privacy-preserving sensing</li>
+        <li>Physical-layer sensing security</li>
+      </ul>
+
+      <h3>Watch it in action</h3>
+      <div class="video-grid">
+        <article class="video-card">
+          <video controls preload="metadata" src="/lab/videos/ultrasound-watermark-demo.mp4"></video>
+          <div class="body">
+            <h4>Ultrasound Watermark</h4>
+            <p>Embedding watermarks into live speech with ultrasound, so unauthorized recordings can be traced and verified.</p>
+          </div>
+        </article>
+        <article class="video-card">
+          <video controls preload="metadata" src="/lab/videos/secure-irs-demo.mp4"></video>
+          <div class="body">
+            <h4>Secure-IRS (ICNC'25)</h4>
+            <p>An intelligent reflecting surface defends against adversarial physical-layer sensing in ISAC systems.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3>Projects</h3>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="/lab/images/elements/fig_awm.png" alt="Learning to Evade (AWM)">
+          <div class="body">
+            <h3>Learning to Evade</h3>
+            <p>Adaptive attacks on audio watermarking that bypass distribution-based defenses (Interspeech'26).</p>
+            <div class="project-links">
+              <a href="https://adaptiveaudiowmattack.github.io/">Demo</a>
+              <a href="/papers/learning_to_evade_interspeech26.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/audiowm.png" alt="AUDIO WATERMARK">
+          <div class="body">
+            <h3>AUDIO WATERMARK</h3>
+            <p>Dynamic and harmless watermark for black-box voice dataset copyright protection (USENIX Security'25).</p>
+            <div class="project-links">
+              <a href="https://audiowatermark.github.io/">Project</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/nec.png" alt="NEC">
+          <div class="body">
+            <h3>NEC</h3>
+            <p>Speaker-selective cancellation via neural enhanced ultrasound shadowing (DSN'22). Covered by <em>New Scientist</em>.</p>
+            <div class="project-links">
+              <a href="https://nec-app.github.io/">Project</a>
+              <a href="/papers/nec.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/vsmask.png" alt="VSMask">
+          <div class="body">
+            <h3>VSMask</h3>
+            <p>Real-time predictive perturbation against voice synthesis attacks (WiSec'23).</p>
+            <div class="project-links">
+              <a href="https://arxiv.org/pdf/2305.05736.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/secureIRS.png" alt="Secure-IRS">
+          <div class="body">
+            <h3>Secure-IRS</h3>
+            <p>Defending against adversarial physical-layer sensing in ISAC systems (ICNC'25).</p>
+            <div class="project-links">
+              <a href="/papers/secureIRS.pdf">Paper</a>
+              <a href="https://www.youtube.com/watch?v=oii3aj86tP0">Demo</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:1em"><a href="/lab/publications/#human-human">Full paper list with authors →</a></p>
+    </article>
+
+    <!-- ============ 6. THRUST 3 ============ -->
+    <article class="thrust-block" id="human-agent">
+      <h2>Thrust 3: Human–Agent Security</h2>
+      <p class="thrust-question">How can we secure interactions among people, autonomous AI agents, websites, and knowledge systems?</p>
+      <p>
+        Agents that browse the web, interpret audio, retrieve documents, generate content, and take actions
+        create a new threat surface. We study jailbreaks, scraper abuse, RAG integrity, generative-system
+        manipulation, and how to prove a real human is behind the keyboard.
+      </p>
+      <ul class="theme-list">
+        <li>Speech &amp; multimodal jailbreaks</li>
+        <li>Web-agent &amp; scraper security</li>
+        <li>RAG &amp; knowledge integrity</li>
+        <li>Human-presence verification</li>
+        <li>Agent behavior control</li>
+      </ul>
+
+      <h3>Watch it in action</h3>
+      <div class="video-grid">
+        <article class="video-card video-card-wide">
+          <div class="video-frame">
+            <video controls preload="metadata" src="/lab/videos/mobile-gui-agent-demo.mp4"></video>
+          </div>
+          <div class="body">
+            <h4>How Mobile Agents Work, and How We Tell Them from Humans</h4>
+            <p>See how a mobile GUI agent perceives the screen, plans, and taps through an app, and how we can detect that the actions come from an agent rather than a human.</p>
+            <p class="video-credit">Demo credit: incoming Ph.D. student Hengrui Yan, Tsinghua University</p>
+          </div>
+        </article>
+      </div>
+
+      <h3>Projects</h3>
+      <div class="project-grid">
+        <article class="project-card">
+          <img class="contain" src="/lab/images/elements/icon_robot.png" alt="EchoGuard agent detection">
+          <div class="body">
+            <h3>EchoGuard</h3>
+            <p>Continuous ultrasound-based human presence verification that tells real users apart from AI agents.</p>
+            <div class="project-links">
+              <a href="https://hanqingguo.github.io/echoguard-demo/">Project</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img class="contain" src="/lab/images/elements/icon_evil_agent.png" alt="Agent Security Playground">
+          <div class="body">
+            <h3>Agent Security Playground</h3>
+            <p>Interactive teaching platform: launch data-ingestion, tool-use, and chained attacks on a sandboxed agent.</p>
+            <div class="project-links">
+              <a href="https://hanqingguo.github.io/agentSecurity/">Project</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img class="contain" src="/lab/images/elements/icon_hacker.png" alt="WebCloak">
+          <div class="body">
+            <h3>WebCloak</h3>
+            <p>Characterizing and mitigating LLM-driven web agents as intelligent scrapers (S&amp;P'26).</p>
+            <div class="project-links">
+              <a href="https://web-cloak.github.io/">Project</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/lab/images/jailbreak_pipeline_fig.png" alt="Audio Jailbreak Attacks">
+          <div class="body">
+            <h3>Audio Jailbreak Attacks</h3>
+            <p>Exposing vulnerabilities in SpeechGPT in a white-box framework (DSN-DSML'25).</p>
+            <div class="project-links">
+              <a href="https://github.com/Magic-Ma-tech/Audio-Jailbreak-Attacks">Code</a>
+              <a href="https://arxiv.org/pdf/2505.18864">Paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:1em"><a href="/lab/publications/#human-agent">Full paper list with authors →</a></p>
+    </article>
+
+    <!-- ============ 7. FOUNDATIONS ============ -->
+    <article class="thrust-block" id="foundations">
+      <h2>Foundations &amp; Earlier Systems Work</h2>
+      <p>
+        Our security agenda builds on award-winning systems work in wireless communication, LoRa,
+        underwater navigation, and mobile sensing.
+      </p>
+      <div class="project-grid">
+        <article class="project-card">
+          <img src="/images/lora.png" alt="NELoRa">
+          <div class="body">
+            <h3>NELoRa</h3>
+            <p>Ultra-low SNR LoRa communication with neural-enhanced demodulation, Best Paper Award (SenSys'21).</p>
+            <div class="project-links">
+              <a href="/papers/nelora.pdf">Paper</a>
+              <a href="https://github.com/hanqingguo/NELoRa-Sensys">Code</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/underwater.png" alt="U-Star">
+          <div class="body">
+            <h3>U-Star</h3>
+            <p>An underwater navigation system based on passive 3D optical identification tags (MobiCom'22).</p>
+            <div class="project-links">
+              <a href="/papers/ustar.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/lab/images/elements/fig_dsic.png" alt="DSIC">
+          <div class="body">
+            <h3>DSIC</h3>
+            <p>Deep-learning self-interference cancellation for in-band full duplex wireless, Best Paper Award (GLOBECOM'19).</p>
+            <div class="project-links">
+              <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9013521">Paper</a>
+            </div>
+          </div>
+        </article>
+        <article class="project-card">
+          <img src="/images/fexiot.png" alt="FedIoT">
+          <div class="body">
+            <h3>FedIoT</h3>
+            <p>Federated IoT interaction vulnerability analysis (ICDE'23).</p>
+            <div class="project-links">
+              <a href="/papers/Federated_IoT_Interaction_Vulnerability_Analysis.pdf">Paper</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p style="margin-top:1em"><a href="/lab/publications/#foundations">Full paper list with authors →</a></p>
+    </article>
+  </main>
+
+  <footer>
+    <p>ASPIRE Lab · Indiana University Bloomington · Directed by <a href="/" style="color:#fff;">Dr. Hanqing Guo</a></p>
+  </footer>
+</body>
+</html>

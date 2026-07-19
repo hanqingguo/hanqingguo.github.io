@@ -7,7 +7,7 @@
   --iu-cream: #faf8f6;
   --iu-text: #222222;
   --iu-link: #990000;
-  --header-height: 52px;
+  --header-height: 56px;
 }
 
 body {
@@ -19,6 +19,7 @@ body {
   }
   
   header {
+    position: relative;
     background-color: var(--iu-crimson);
     color: white;
     height: var(--header-height);
@@ -27,7 +28,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1.25em;
     box-sizing: border-box;
+    overflow: visible;
   }
 
   .header-logo {
@@ -55,11 +58,18 @@ body {
 
 .header-nav {
   flex: 1;
+  min-width: 0;
   text-align: right;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
+
+.header-nav > ul {
+  min-width: 0;
+  text-align: right;
+}
+
 .news{
   max-height: 500px;
   overflow-y: scroll;
@@ -150,6 +160,44 @@ body {
   a:hover {
     color: var(--iu-crimson-dark);
   }
+
+  /* Centered cross-site link — reads as an action, not the site title */
+  header a.nav-lab-link,
+  a.nav-lab-link {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13pt;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    line-height: 1;
+    margin: 0;
+    padding: 0.25em 0.55em;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  header a.nav-lab-link:hover,
+  a.nav-lab-link:hover {
+    color: #fff !important;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.18);
+    border-color: #fff;
+  }
+
+  header nav ul li a {
+    color: #fff !important;
+  }
+
+  header nav ul li a:hover {
+    color: #ffe8e8 !important;
+  }
   /* Container for the entire profile section */
 .profile-section {
   text-align: center;
@@ -227,14 +275,44 @@ body {
 }
 
 /* Social media links styling */
+.social-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .social-links a {
-  margin-right: 10px;
+  margin-right: 0;
 }
 
 .social-links img {
   width: 40px;
   height: 40px;
-  margin-top: 10px;
+  display: block;
+}
+
+.social-links .lab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 0.9em;
+  background: var(--iu-crimson);
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 0.95em;
+  text-decoration: none !important;
+  border-radius: 6px;
+  border: 2px solid var(--iu-crimson-dark);
+  box-sizing: border-box;
+}
+
+.social-links .lab-btn:hover {
+  background: var(--iu-crimson-dark);
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
 /* Navigation links below the profile info */
@@ -558,6 +636,20 @@ summary h2 {
   .header-nav {
     width: 100%;
     text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6em 1em;
+  }
+
+  .nav-lab-link,
+  header a.nav-lab-link {
+    position: static;
+    transform: none;
+    font-size: 14pt;
+    width: 100%;
+    text-align: center;
+    order: -1;
+    margin: 0.15em 0 0.25em;
   }
 
   nav ul li {
