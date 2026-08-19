@@ -646,8 +646,8 @@ header .header-nav a.active {
 .resource-list .name {
   font-weight: bold;
   margin-right: 0.75em;
-  display: inline-block;
-  min-width: 10em;
+  display: block;
+  margin-bottom: 0.2em;
 }
 
 @media (max-width: 900px) {
