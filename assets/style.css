@@ -375,6 +375,23 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Larger certificate / media figures on the Awards page */
+.awards-timeline .grant-entry {
+  grid-template-columns: 5.5em 11em 1fr;
+  align-items: start;
+}
+
+.awards-timeline .grant-ico {
+  min-height: 8em;
+}
+
+.awards-timeline .grant-ico img,
+.awards-timeline .grant-ico img.award-thumb {
+  max-width: 160px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
 .grant-desc {
   padding: 0 0 1.25em 0.5em;
   font-size: 0.98em;
@@ -404,6 +421,15 @@ body {
 
   .grant-ico img {
     max-width: 52px;
+  }
+
+  .awards-timeline .grant-entry {
+    grid-template-columns: 4em 7.5em 1fr;
+  }
+
+  .awards-timeline .grant-ico img,
+  .awards-timeline .grant-ico img.award-thumb {
+    max-width: 110px;
   }
 
   .grant-desc {
