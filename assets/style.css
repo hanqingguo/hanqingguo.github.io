@@ -191,6 +191,12 @@ body {
     border-color: #fff;
   }
 
+  header nav ul li a.nav-cross {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+
   header nav ul li a {
     color: #fff !important;
   }
@@ -669,6 +675,62 @@ summary h2 {
   background: transparent;
 }
 
+.intern-list {
+  list-style: none;
+  margin: 0.2em 0 0.4em;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7em 1.4em;
+}
+
+.intern-list li {
+  border-left: 3px solid var(--iu-crimson);
+  padding: 0.15em 0 0.2em 0.75em;
+}
+
+.intern-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6em;
+}
+
+.intern-top h3 {
+  margin: 0;
+  font-size: 1em;
+  color: #222;
+}
+
+.intern-time {
+  color: var(--iu-crimson);
+  font-weight: 700;
+  font-size: 0.82em;
+  white-space: nowrap;
+}
+
+.intern-role,
+.intern-project,
+.intern-outcome {
+  margin: 0.12em 0 0;
+  font-size: 0.88em;
+  line-height: 1.35;
+}
+
+.intern-role {
+  color: #555;
+}
+
+.intern-project span,
+.intern-outcome span {
+  font-weight: 700;
+  margin-right: 0.3em;
+}
+
+.intern-outcome {
+  color: var(--iu-crimson);
+}
+
 .group-page section {
   margin: 0.75em 0 1em;
 }
@@ -817,6 +879,14 @@ summary h2 {
   .intern-table {
     display: block;
     overflow-x: auto;
+  }
+
+  .intern-list {
+    grid-template-columns: 1fr;
+  }
+
+  .intern-top {
+    flex-wrap: wrap;
   }
 
   /* Publication section adjustments */
